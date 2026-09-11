@@ -1,0 +1,196 @@
+---
+const {
+  title = "Bruno Faustino Digital Studio",
+  description = "Estratégia, tecnologia e soluções digitais para negócios mais fortes.",
+  canonical,
+  image = "/social/og-default.png",
+  type = "website",
+  noindex = false,
+} = Astro.props;
+
+const brandName = "Bruno Faustino Digital Studio";
+
+const productionSite =
+  import.meta.env.PUBLIC_SITE_URL ||
+  Astro.site?.toString();
+
+const siteURL = productionSite
+  ? new URL(productionSite)
+  : null;
+
+const canonicalURL = canonical
+  ? siteURL
+    ? new URL(canonical, siteURL)
+    : new URL(canonical, Astro.url.origin)
+  : siteURL
+    ? new URL(Astro.url.pathname, siteURL)
+    : null;
+
+const imageURL = image
+  ? siteURL
+    ? new URL(image, siteURL)
+    : new URL(image, Astro.url.origin)
+  : null;
+
+const isDevelopment = import.meta.env.DEV;
+
+const robotsContent =
+  noindex || isDevelopment
+    ? "noindex, nofollow"
+    : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
+
+const isHomepage = Astro.url.pathname === "/";
+
+const websiteSchema =
+  isHomepage && siteURL
+    ? {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: brandName,
+        url: siteURL.toString(),
+        inLanguage: "pt-PT",
+        description,
+      }
+    : null;
+---
+
+<title>{title}</title>
+
+<meta
+  name="description"
+  content={description}
+/>
+
+<meta
+  name="robots"
+  content={robotsContent}
+/>
+
+<meta
+  name="googlebot"
+  content={robotsContent}
+/>
+
+<meta
+  name="theme-color"
+  content="#111315"
+/>
+
+<meta
+  name="color-scheme"
+  content="dark"
+/>
+
+{
+  canonicalURL && (
+    <link
+      rel="canonical"
+      href={canonicalURL.toString()}
+    />
+  )
+}
+
+<meta
+  property="og:type"
+  content={type}
+/>
+
+<meta
+  property="og:site_name"
+  content={brandName}
+/>
+
+<meta
+  property="og:title"
+  content={title}
+/>
+
+<meta
+  property="og:description"
+  content={description}
+/>
+
+<meta
+  property="og:locale"
+  content="pt_PT"
+/>
+
+{
+  canonicalURL && (
+    <meta
+      property="og:url"
+      content={canonicalURL.toString()}
+    />
+  )
+}
+
+{
+  imageURL && (
+    <>
+      <meta
+        property="og:image"
+        content={imageURL.toString()}
+      />
+
+      <meta
+        property="og:image:width"
+        content="1200"
+      />
+
+      <meta
+        property="og:image:height"
+        content="630"
+      />
+
+      <meta
+        property="og:image:type"
+        content="image/png"
+      />
+
+      <meta
+        property="og:image:alt"
+        content={`${brandName} — Negócios mais fortes no mundo digital.`}
+      />
+    </>
+  )
+}
+
+<meta
+  name="twitter:card"
+  content="summary_large_image"
+/>
+
+<meta
+  name="twitter:title"
+  content={title}
+/>
+
+<meta
+  name="twitter:description"
+  content={description}
+/>
+
+{
+  imageURL && (
+    <>
+      <meta
+        name="twitter:image"
+        content={imageURL.toString()}
+      />
+
+      <meta
+        name="twitter:image:alt"
+        content={`${brandName} — Negócios mais fortes no mundo digital.`}
+      />
+    </>
+  )
+}
+
+{
+  websiteSchema && (
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(websiteSchema)}
+    />
+  )
+}

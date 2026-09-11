@@ -1,0 +1,340 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/projects/ProjectCard.astro";
+import Button from "../components/ui/Button.astro";
+import { projects } from "../data/projects.js";
+---
+
+<BaseLayout
+  title="Projetos — Bruno Faustino Digital Studio"
+  description="Projetos de estratégia, desenvolvimento web, SEO e tecnologia desenvolvidos pela Bruno Faustino Digital Studio."
+>
+  <section class="projects-hero">
+    <div class="container projects-hero__grid">
+
+      <div class="projects-hero__content">
+        <p class="projects-hero__eyebrow">
+          Projetos
+        </p>
+
+        <h1 class="projects-hero__title">
+          Trabalho pensado para resolver problemas e criar impacto.
+        </h1>
+      </div>
+
+      <div class="projects-hero__intro">
+        <p class="projects-hero__lead">
+          Projetos reais e conceptuais que demonstram diferentes formas
+          de combinar estratégia, design, desenvolvimento e tecnologia.
+        </p>
+
+        <p>
+          Alguns trabalhos encontram-se ainda em desenvolvimento.
+          Quando isso acontece, o estado do projeto é apresentado de
+          forma transparente.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="projects-list">
+    <div class="container">
+
+      <div class="projects-list__header">
+        <p>
+          Portefólio
+        </p>
+
+        <h2>
+          Uma seleção de trabalho em diferentes contextos.
+        </h2>
+      </div>
+
+      <div class="projects-list__grid">
+        {
+          projects.map((project) => (
+            <ProjectCard
+              title={project.title}
+              category={project.category}
+              year={project.year}
+              status={project.status}
+              excerpt={project.excerpt}
+              href={project.href}
+              theme={project.theme}
+            />
+          ))
+        }
+      </div>
+
+    </div>
+  </section>
+
+  <section class="projects-context">
+    <div class="container projects-context__grid">
+
+      <div>
+        <p class="projects-context__eyebrow">
+          Contexto
+        </p>
+
+        <h2>
+          Projetos em diferentes fases, com o mesmo critério.
+        </h2>
+      </div>
+
+      <div class="projects-context__content">
+        <p class="projects-context__lead">
+          O portefólio combina projetos em desenvolvimento, trabalho
+          académico e casos conceptuais.
+        </p>
+
+        <p>
+          O objetivo é mostrar o processo, as decisões e o tipo de problema
+          trabalhado em cada caso — sem apresentar resultados ou métricas
+          que ainda não possam ser comprovados.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="projects-cta">
+    <div class="container projects-cta__inner">
+
+      <div>
+        <p class="projects-cta__eyebrow">
+          Próximo projeto
+        </p>
+
+        <h2>
+          Tem um desafio semelhante?
+        </h2>
+
+        <p>
+          Podemos analisar o ponto de partida e perceber que abordagem
+          faz mais sentido para o seu negócio.
+        </p>
+      </div>
+
+      <div class="projects-cta__action">
+        <Button href="/contactos">
+          Falar sobre um projeto
+        </Button>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .projects-hero {
+    background: var(--color-bg-primary);
+  }
+
+  .projects-hero__grid {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1.2fr)
+      minmax(320px, 0.8fr);
+
+    align-items: end;
+
+    gap: clamp(64px, 10vw, 140px);
+  }
+
+  .projects-hero__eyebrow,
+  .projects-context__eyebrow,
+  .projects-cta__eyebrow {
+    margin-bottom: var(--space-6);
+
+    color: var(--color-primary);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .projects-hero__title {
+    max-width: 1050px;
+
+    margin-bottom: 0;
+
+    font-size: clamp(3.5rem, 6.5vw, 7rem);
+    line-height: 0.96;
+
+    letter-spacing: -0.055em;
+  }
+
+  .projects-hero__intro {
+    max-width: 620px;
+  }
+
+  .projects-hero__lead {
+    color: var(--color-text-primary);
+
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
+    line-height: 1.5;
+  }
+
+  .projects-list {
+    background: var(--color-bg-secondary);
+  }
+
+  .projects-list__header {
+    display: grid;
+    grid-template-columns:
+      minmax(160px, 0.3fr)
+      minmax(0, 1.7fr);
+
+    gap: var(--space-8);
+
+    margin-bottom: var(--space-9);
+  }
+
+  .projects-list__header p {
+    margin: 0;
+
+    color: var(--color-primary);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .projects-list__header h2 {
+    max-width: 900px;
+
+    margin-bottom: 0;
+  }
+
+  .projects-list__grid {
+    display: grid;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: var(--space-7);
+  }
+
+  .projects-list__grid > :nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .projects-context {
+    background: var(--color-bg-primary);
+  }
+
+  .projects-context__grid {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 0.85fr)
+      minmax(320px, 1.15fr);
+
+    gap: clamp(64px, 10vw, 140px);
+  }
+
+  .projects-context h2 {
+    max-width: 760px;
+  }
+
+  .projects-context__content {
+    max-width: 650px;
+  }
+
+  .projects-context__content p {
+    margin-bottom: var(--space-5);
+  }
+
+  .projects-context__lead {
+    color: var(--color-text-primary);
+
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
+    line-height: 1.5;
+  }
+
+  .projects-cta {
+    background: var(--color-primary);
+  }
+
+  .projects-cta__inner {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1.3fr)
+      auto;
+
+    align-items: end;
+
+    gap: var(--space-8);
+  }
+
+  .projects-cta__eyebrow {
+    color: rgba(17, 19, 21, 0.7);
+  }
+
+  .projects-cta h2 {
+    max-width: 900px;
+
+    margin-bottom: var(--space-5);
+
+    color: var(--color-bg-primary);
+
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    line-height: 1;
+
+    letter-spacing: -0.045em;
+  }
+
+  .projects-cta p {
+    max-width: 650px;
+
+    margin-bottom: 0;
+
+    color: rgba(17, 19, 21, 0.75);
+
+    font-size: 1.1rem;
+  }
+
+  .projects-cta__action :global(.button--primary) {
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+
+    border-color: var(--color-bg-primary);
+  }
+
+  .projects-cta__action :global(.button--primary:hover) {
+    background: transparent;
+    color: var(--color-bg-primary);
+  }
+
+  @media (max-width: 900px) {
+    .projects-hero__grid,
+    .projects-list__header,
+    .projects-context__grid,
+    .projects-cta__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .projects-hero__grid,
+    .projects-context__grid {
+      gap: var(--space-8);
+    }
+
+    .projects-list__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .projects-list__grid > :nth-child(3) {
+      grid-column: auto;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .projects-hero__title {
+      font-size: clamp(3rem, 14vw, 4.6rem);
+    }
+  }
+</style>

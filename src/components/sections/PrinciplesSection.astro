@@ -1,0 +1,180 @@
+<section class="principles">
+  <div class="container">
+
+    <div class="principles__header">
+      <p class="principles__eyebrow">
+        Princípios
+      </p>
+
+      <h2 class="principles__title">
+        Menos ruído. Mais intenção em cada decisão.
+      </h2>
+    </div>
+
+    <div class="principles__grid">
+
+      <article class="principle">
+        <span class="principle__number">01</span>
+
+        <h3>Soluções com propósito</h3>
+
+        <p>
+          Cada decisão deve responder a um objetivo concreto e criar valor
+          para o utilizador ou para o negócio.
+        </p>
+      </article>
+
+      <article class="principle">
+        <span class="principle__number">02</span>
+
+        <h3>Simplicidade</h3>
+
+        <p>
+          Evitar complexidade desnecessária e privilegiar soluções claras,
+          eficientes e fáceis de manter.
+        </p>
+      </article>
+
+      <article class="principle">
+        <span class="principle__number">03</span>
+
+        <h3>Qualidade</h3>
+
+        <p>
+          Design, conteúdo e tecnologia devem funcionar como um sistema
+          coerente, rigoroso e consistente.
+        </p>
+      </article>
+
+      <article class="principle">
+        <span class="principle__number">04</span>
+
+        <h3>Evolução contínua</h3>
+
+        <p>
+          Um projeto digital não termina no lançamento. Deve poder medir,
+          aprender, melhorar e crescer ao longo do tempo.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .principles {
+    background: var(--color-bg-primary);
+  }
+
+  .principles__header {
+    display: grid;
+    grid-template-columns:
+      minmax(180px, 0.35fr)
+      minmax(0, 1.65fr);
+
+    gap: var(--space-8);
+
+    align-items: start;
+
+    margin-bottom: var(--space-10);
+  }
+
+  .principles__eyebrow {
+    margin: 0;
+
+    color: var(--color-primary);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .principles__title {
+    max-width: 900px;
+    margin-bottom: 0;
+  }
+
+  .principles__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    border-top: 1px solid var(--color-border);
+  }
+
+  .principle {
+    min-height: 300px;
+
+    padding: var(--space-7);
+
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .principle:nth-child(odd) {
+    padding-left: 0;
+
+    border-right: 1px solid var(--color-border);
+  }
+
+  .principle:nth-child(even) {
+    padding-right: 0;
+  }
+
+  .principle__number {
+    display: block;
+
+    margin-bottom: var(--space-9);
+
+    color: var(--color-text-muted);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+  }
+
+  .principle h3 {
+    margin-bottom: var(--space-4);
+
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: 500;
+  }
+
+  .principle p {
+    max-width: 520px;
+
+    margin-bottom: 0;
+
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 900px) {
+    .principles__header {
+      grid-template-columns: 1fr;
+
+      gap: var(--space-6);
+
+      margin-bottom: var(--space-8);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .principles__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .principle {
+      min-height: auto;
+
+      padding: var(--space-7) 0;
+
+      border-right: 0 !important;
+    }
+
+    .principle__number {
+      margin-bottom: var(--space-5);
+    }
+  }
+</style>

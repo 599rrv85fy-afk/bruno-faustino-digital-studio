@@ -1,0 +1,152 @@
+---
+import Button from "../ui/Button.astro";
+---
+
+<section class="about-preview">
+  <div class="container about-preview__grid">
+
+    <div class="about-preview__visual">
+      <div class="about-preview__image">
+        <span aria-hidden="true">
+          Bruno Faustino
+        </span>
+      </div>
+    </div>
+
+    <div class="about-preview__content">
+      <p class="about-preview__eyebrow">
+        Sobre
+      </p>
+
+      <h2 class="about-preview__title">
+        Tecnologia com propósito. Estratégia com clareza.
+      </h2>
+
+      <p class="about-preview__lead">
+        Sou o Bruno Faustino, fundador da Bruno Faustino Digital Studio.
+        Trabalho entre estratégia, tecnologia e desenvolvimento digital.
+      </p>
+
+      <p>
+        O objetivo é transformar desafios de negócio em soluções digitais
+        mais claras, eficazes e preparadas para evoluir.
+      </p>
+
+      <div class="about-preview__action">
+        <Button href="/sobre" variant="secondary">
+          Conhecer o meu percurso
+        </Button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .about-preview {
+    background: var(--color-bg-secondary);
+  }
+
+  .about-preview__grid {
+    display: grid;
+    grid-template-columns:
+      minmax(320px, 0.85fr)
+      minmax(0, 1.15fr);
+
+    align-items: center;
+
+    gap: clamp(64px, 10vw, 140px);
+  }
+
+  .about-preview__visual {
+    min-width: 0;
+  }
+
+  .about-preview__image {
+    display: flex;
+    align-items: flex-end;
+
+    aspect-ratio: 4 / 5;
+
+    padding: var(--space-6);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+
+    background:
+      linear-gradient(
+        160deg,
+        rgba(111, 130, 157, 0.18),
+        rgba(17, 19, 21, 1)
+      );
+
+    overflow: hidden;
+  }
+
+  .about-preview__image span {
+    color: var(--color-text-muted);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .about-preview__eyebrow {
+    margin-bottom: var(--space-6);
+
+    color: var(--color-primary);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .about-preview__title {
+    max-width: 820px;
+
+    margin-bottom: var(--space-7);
+  }
+
+  .about-preview__lead {
+    color: var(--color-text-primary);
+
+    font-size: clamp(1.25rem, 2vw, 1.55rem);
+    line-height: 1.55;
+  }
+
+  .about-preview__content > p {
+    max-width: 680px;
+
+    margin-bottom: var(--space-5);
+  }
+
+  .about-preview__action {
+    margin-top: var(--space-7);
+  }
+
+  @media (max-width: 900px) {
+    .about-preview__grid {
+      grid-template-columns: 1fr;
+
+      gap: var(--space-8);
+    }
+
+    .about-preview__visual {
+      max-width: 560px;
+    }
+
+    .about-preview__image {
+      aspect-ratio: 16 / 11;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .about-preview__image {
+      aspect-ratio: 4 / 3;
+    }
+  }
+</style>

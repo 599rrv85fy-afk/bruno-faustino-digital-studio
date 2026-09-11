@@ -1,0 +1,255 @@
+---
+import Button from "../ui/Button.astro";
+---
+
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="hero__eyebrow">
+        Build better. Grow smarter.
+      </p>
+
+      <h1 class="hero__title">
+        Negócios mais fortes no mundo digital.
+      </h1>
+
+      <p class="hero__description">
+        Estratégia, tecnologia e desenvolvimento digital
+        orientados para criar experiências melhores,
+        negócios mais eficientes e crescimento sustentável.
+      </p>
+
+      <div class="hero__actions">
+        <Button href="/contactos">
+          Falar sobre um projeto
+        </Button>
+
+        <Button href="/projetos" variant="secondary">
+          Ver projetos
+        </Button>
+      </div>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <div class="hero__visual-frame">
+        <div class="hero__visual-mark">
+          BF
+        </div>
+
+        <div class="hero__visual-line"></div>
+
+        <div class="hero__visual-copy">
+          <span>Estratégia</span>
+          <span>Tecnologia</span>
+          <span>Resultados</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: flex;
+    align-items: center;
+
+    min-height: calc(100vh - 80px);
+
+    padding-block: clamp(96px, 12vw, 160px);
+
+    overflow: hidden;
+  }
+
+  .hero__inner {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1.3fr)
+      minmax(320px, 0.7fr);
+
+    align-items: center;
+    gap: clamp(64px, 8vw, 120px);
+  }
+
+  .hero__content {
+    max-width: 900px;
+  }
+
+  .hero__eyebrow {
+    margin-bottom: var(--space-6);
+
+    color: var(--color-primary);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .hero__title {
+    max-width: 1050px;
+
+    margin-bottom: var(--space-7);
+
+    font-size: clamp(3.6rem, 7vw, 7.2rem);
+    line-height: 0.94;
+
+    letter-spacing: -0.055em;
+  }
+
+  .hero__description {
+    max-width: 700px;
+
+    margin-bottom: var(--space-7);
+
+    color: var(--color-text-secondary);
+
+    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+    line-height: 1.6;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: var(--space-4);
+  }
+
+  .hero__visual {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .hero__visual-frame {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: min(100%, 420px);
+    aspect-ratio: 4 / 5;
+
+    padding: clamp(28px, 4vw, 48px);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(111, 130, 157, 0.12),
+        rgba(24, 27, 31, 0.98)
+      );
+
+    box-shadow: var(--shadow-soft);
+
+    overflow: hidden;
+  }
+
+  .hero__visual-frame::before {
+    content: "";
+
+    position: absolute;
+    top: -20%;
+    right: -30%;
+
+    width: 320px;
+    height: 320px;
+
+    border-radius: 50%;
+
+    background:
+      radial-gradient(
+        circle,
+        rgba(111, 130, 157, 0.28),
+        rgba(111, 130, 157, 0)
+      );
+
+    filter: blur(8px);
+  }
+
+  .hero__visual-mark {
+    position: relative;
+    z-index: 1;
+
+    color: var(--color-text-primary);
+
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 700;
+
+    letter-spacing: -0.06em;
+  }
+
+  .hero__visual-line {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    height: 1px;
+
+    background: var(--color-border);
+  }
+
+  .hero__visual-copy {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--space-2);
+
+    color: var(--color-text-secondary);
+
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 1100px) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__visual {
+      justify-content: flex-start;
+    }
+
+    .hero__visual-frame {
+      width: min(100%, 520px);
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: auto;
+
+      padding-block: 88px 80px;
+    }
+
+    .hero__inner {
+      gap: var(--space-9);
+    }
+
+    .hero__title {
+      font-size: clamp(3rem, 15vw, 5rem);
+    }
+
+    .hero__description {
+      font-size: 1.05rem;
+    }
+
+    .hero__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .hero__visual-frame {
+      aspect-ratio: 16 / 10;
+      padding: var(--space-6);
+    }
+  }
+</style>

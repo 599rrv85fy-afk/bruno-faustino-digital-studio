@@ -1,0 +1,365 @@
+---
+import { navigation } from "../../data/navigation.js";
+import { socialLinks } from "../../data/social.js";
+
+const currentYear = new Date().getFullYear();
+
+const activeSocialLinks = socialLinks.filter(
+  (item) =>
+    item.href &&
+    item.href !== "#" &&
+    item.href.trim() !== ""
+);
+---
+
+<footer class="site-footer">
+  <div class="container">
+
+    <div class="site-footer__top">
+
+      <div class="site-footer__brand">
+        <a
+          href="/"
+          class="site-footer__logo"
+          aria-label="Bruno Faustino Digital Studio — Página inicial"
+        >
+          <span class="site-footer__mark" aria-hidden="true">
+            BF
+          </span>
+
+          <span class="site-footer__name">
+            Bruno Faustino
+            <span>Digital Studio</span>
+          </span>
+        </a>
+
+        <p class="site-footer__tagline">
+          Build better. Grow smarter.
+        </p>
+
+        <p class="site-footer__description">
+          Estratégia, tecnologia e soluções digitais para construir
+          negócios mais fortes no mundo digital.
+        </p>
+      </div>
+
+      <div
+        class:list={[
+          "site-footer__navigation",
+          {
+            "site-footer__navigation--two-columns":
+              activeSocialLinks.length === 0,
+          },
+        ]}
+      >
+
+        <div class="site-footer__column">
+          <p class="site-footer__label">
+            Navegação
+          </p>
+
+          <ul>
+            {
+              navigation.map((item) => (
+                <li>
+                  <a href={item.href}>
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="site-footer__column">
+          <p class="site-footer__label">
+            Contacto
+          </p>
+
+          <ul>
+            <li>
+              <a href="/contactos">
+                Falar sobre um projeto
+              </a>
+            </li>
+
+            <li>
+              <a href="mailto:hello@brunofaustino.pt">
+                hello@brunofaustino.pt
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {
+          activeSocialLinks.length > 0 && (
+            <div class="site-footer__column">
+              <p class="site-footer__label">
+                Redes
+              </p>
+
+              <ul>
+                {
+                  activeSocialLinks.map((item) => (
+                    <li>
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          )
+        }
+
+      </div>
+
+    </div>
+
+    <div class="site-footer__bottom">
+
+      <p>
+        © {currentYear} Bruno Faustino Digital Studio.
+      </p>
+
+      <nav
+        class="site-footer__legal"
+        aria-label="Navegação legal"
+      >
+        <a href="/privacidade">
+          Privacidade
+        </a>
+
+        <a href="/cookies">
+          Cookies
+        </a>
+
+        <a href="/termos">
+          Termos
+        </a>
+      </nav>
+
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding-block:
+      var(--space-10)
+      var(--space-6);
+
+    background: var(--color-bg-primary);
+
+    border-top: 1px solid var(--color-border);
+  }
+
+  .site-footer__top {
+    display: grid;
+    grid-template-columns:
+      minmax(280px, 0.8fr)
+      minmax(0, 1.2fr);
+
+    gap: clamp(64px, 10vw, 140px);
+
+    margin-bottom: var(--space-10);
+  }
+
+  .site-footer__brand {
+    max-width: 440px;
+  }
+
+  .site-footer__logo {
+    display: inline-flex;
+    align-items: center;
+
+    gap: var(--space-3);
+
+    margin-bottom: var(--space-7);
+
+    color: var(--color-text-primary);
+  }
+
+  .site-footer__mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid var(--color-border-hover);
+    border-radius: var(--radius-md);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    letter-spacing: -0.03em;
+  }
+
+  .site-footer__name {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    line-height: 1.15;
+  }
+
+  .site-footer__name span {
+    margin-top: 3px;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.7rem;
+    font-weight: 500;
+
+    letter-spacing: 0.04em;
+  }
+
+  .site-footer__tagline {
+    margin-bottom: var(--space-4);
+
+    color: var(--color-text-primary);
+
+    font-size: 1.2rem;
+    font-weight: 500;
+
+    letter-spacing: -0.02em;
+  }
+
+  .site-footer__description {
+    margin-bottom: 0;
+
+    color: var(--color-text-secondary);
+  }
+
+  .site-footer__navigation {
+    display: grid;
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: var(--space-7);
+  }
+
+  .site-footer__navigation--two-columns {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .site-footer__label {
+    margin-bottom: var(--space-5);
+
+    color: var(--color-text-muted);
+
+    font-size: 0.72rem;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .site-footer__column ul {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  .site-footer__column li + li {
+    margin-top: var(--space-3);
+  }
+
+  .site-footer__column a {
+    color: var(--color-text-secondary);
+
+    font-size: 0.92rem;
+
+    transition: color var(--transition-fast);
+  }
+
+  .site-footer__column a:hover {
+    color: var(--color-text-primary);
+  }
+
+  .site-footer__column a:focus-visible,
+  .site-footer__legal a:focus-visible,
+  .site-footer__logo:focus-visible {
+    outline: 2px solid var(--color-primary-hover);
+    outline-offset: 4px;
+  }
+
+  .site-footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: var(--space-6);
+
+    padding-top: var(--space-6);
+
+    border-top: 1px solid var(--color-border);
+  }
+
+  .site-footer__bottom p {
+    margin: 0;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.8rem;
+  }
+
+  .site-footer__legal {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: var(--space-5);
+  }
+
+  .site-footer__legal a {
+    color: var(--color-text-muted);
+
+    font-size: 0.8rem;
+
+    transition: color var(--transition-fast);
+  }
+
+  .site-footer__legal a:hover {
+    color: var(--color-text-primary);
+  }
+
+  @media (max-width: 900px) {
+    .site-footer__top {
+      grid-template-columns: 1fr;
+
+      gap: var(--space-8);
+
+      margin-bottom: var(--space-8);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .site-footer {
+      padding-top: var(--space-9);
+    }
+
+    .site-footer__navigation,
+    .site-footer__navigation--two-columns {
+      grid-template-columns: 1fr;
+
+      gap: var(--space-7);
+    }
+
+    .site-footer__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

@@ -1,0 +1,710 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+
+const {
+  project,
+} = Astro.props;
+---
+
+<BaseLayout
+  title={`${project.title} — Bruno Faustino Digital Studio`}
+  description={project.excerpt}
+>
+  <section class="case-study-hero">
+    <div class="container case-study-hero__grid">
+
+      <div class="case-study-hero__content">
+        <p class="case-study-hero__eyebrow">
+          Case Study
+        </p>
+
+        <h1 class="case-study-hero__title">
+          {project.title}
+        </h1>
+
+        <p class="case-study-hero__excerpt">
+          {project.excerpt}
+        </p>
+      </div>
+
+      <div class="case-study-hero__meta">
+
+        <div class="case-study-hero__meta-item">
+          <span>
+            Setor
+          </span>
+
+          <strong>
+            {project.category}
+          </strong>
+        </div>
+
+        <div class="case-study-hero__meta-item">
+          <span>
+            Ano
+          </span>
+
+          <strong>
+            {project.year}
+          </strong>
+        </div>
+
+        <div class="case-study-hero__meta-item">
+          <span>
+            Estado
+          </span>
+
+          <strong>
+            {project.status}
+          </strong>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="case-study-visual">
+    <div class="container">
+
+      <div
+        class:list={[
+          "case-study-visual__frame",
+          `case-study-visual__frame--${project.theme}`,
+        ]}
+      >
+        <div class="case-study-visual__placeholder">
+          <span>
+            {project.title}
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="case-study-story">
+    <div class="container">
+
+      <article class="case-study-story__item">
+        <span class="case-study-story__number">
+          01
+        </span>
+
+        <div class="case-study-story__heading">
+          <p>
+            Desafio
+          </p>
+
+          <h2>
+            {project.challenge.title}
+          </h2>
+        </div>
+
+        <div class="case-study-story__text">
+          <p>
+            {project.challenge.text}
+          </p>
+        </div>
+      </article>
+
+      <article class="case-study-story__item">
+        <span class="case-study-story__number">
+          02
+        </span>
+
+        <div class="case-study-story__heading">
+          <p>
+            Estratégia
+          </p>
+
+          <h2>
+            {project.strategy.title}
+          </h2>
+        </div>
+
+        <div class="case-study-story__text">
+          <p>
+            {project.strategy.text}
+          </p>
+        </div>
+      </article>
+
+      <article class="case-study-story__item">
+        <span class="case-study-story__number">
+          03
+        </span>
+
+        <div class="case-study-story__heading">
+          <p>
+            Solução
+          </p>
+
+          <h2>
+            {project.solution.title}
+          </h2>
+        </div>
+
+        <div class="case-study-story__text">
+          <p>
+            {project.solution.text}
+          </p>
+        </div>
+      </article>
+
+      <article class="case-study-story__item">
+        <span class="case-study-story__number">
+          04
+        </span>
+
+        <div class="case-study-story__heading">
+          <p>
+            Resultados
+          </p>
+
+          <h2>
+            {project.results.title}
+          </h2>
+        </div>
+
+        <div class="case-study-story__text">
+          <p>
+            {project.results.text}
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="case-study-services">
+    <div class="container case-study-services__grid">
+
+      <div class="case-study-services__intro">
+        <p class="case-study-services__eyebrow">
+          Áreas trabalhadas
+        </p>
+
+        <h2>
+          O que faz parte deste projeto.
+        </h2>
+      </div>
+
+      <div class="case-study-services__list">
+        {
+          project.services.map((service, index) => (
+            <div class="case-study-services__item">
+
+              <span>
+                {String(index + 1).padStart(2, "0")}
+              </span>
+
+              <p>
+                {service}
+              </p>
+
+            </div>
+          ))
+        }
+      </div>
+
+    </div>
+  </section>
+
+  <section class="case-study-gallery">
+    <div class="container">
+
+      <div class="case-study-gallery__header">
+        <p class="case-study-gallery__eyebrow">
+          Galeria
+        </p>
+
+        <h2>
+          Imagens e detalhes do projeto.
+        </h2>
+      </div>
+
+      <div class="case-study-gallery__grid">
+        {
+          project.gallery.map((item, index) => (
+            <div
+              class:list={[
+                "case-study-gallery__placeholder",
+                {
+                  "case-study-gallery__placeholder--large":
+                    index === 0,
+                },
+              ]}
+            >
+              <span>
+                {item}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+
+    </div>
+  </section>
+
+  <section class="case-study-cta">
+    <div class="container case-study-cta__inner">
+
+      <div>
+        <p class="case-study-cta__eyebrow">
+          Próximo passo
+        </p>
+
+        <h2>
+          Tem um projeto com desafios semelhantes?
+        </h2>
+      </div>
+
+      <div class="case-study-cta__action">
+        <Button href="/contactos">
+          Falar sobre um projeto
+        </Button>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .case-study-hero {
+    background: var(--color-bg-primary);
+  }
+
+  .case-study-hero__grid {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1.2fr)
+      minmax(280px, 0.8fr);
+
+    align-items: end;
+
+    gap: clamp(64px, 10vw, 140px);
+  }
+
+  .case-study-hero__eyebrow,
+  .case-study-services__eyebrow,
+  .case-study-gallery__eyebrow,
+  .case-study-cta__eyebrow {
+    margin-bottom: var(--space-6);
+
+    color: var(--color-primary);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .case-study-hero__title {
+    margin-bottom: var(--space-6);
+
+    font-size: clamp(3.5rem, 7vw, 7rem);
+    line-height: 0.95;
+
+    letter-spacing: -0.055em;
+  }
+
+  .case-study-hero__excerpt {
+    max-width: 720px;
+
+    margin-bottom: 0;
+
+    color: var(--color-text-secondary);
+
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    line-height: 1.6;
+  }
+
+  .case-study-hero__meta {
+    display: grid;
+
+    border-top: 1px solid var(--color-border);
+  }
+
+  .case-study-hero__meta-item {
+    display: flex;
+    justify-content: space-between;
+
+    gap: var(--space-5);
+
+    padding-block: var(--space-4);
+
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .case-study-hero__meta span {
+    color: var(--color-text-muted);
+
+    font-size: 0.75rem;
+
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .case-study-hero__meta strong {
+    color: var(--color-text-primary);
+
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    text-align: right;
+  }
+
+  .case-study-visual {
+    padding-top: 0;
+
+    background: var(--color-bg-primary);
+  }
+
+  .case-study-visual__frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 620px;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+
+    overflow: hidden;
+  }
+
+  .case-study-visual__frame--slate {
+    background:
+      linear-gradient(
+        145deg,
+        rgba(111, 130, 157, 0.3),
+        rgba(24, 27, 31, 1)
+      );
+  }
+
+  .case-study-visual__frame--stone {
+    background:
+      linear-gradient(
+        145deg,
+        rgba(181, 180, 175, 0.18),
+        rgba(24, 27, 31, 1)
+      );
+  }
+
+  .case-study-visual__frame--charcoal {
+    background:
+      linear-gradient(
+        145deg,
+        rgba(242, 240, 235, 0.08),
+        rgba(17, 19, 21, 1)
+      );
+  }
+
+  .case-study-visual__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 70%;
+    min-height: 400px;
+
+    padding: var(--space-7);
+
+    border: 1px solid var(--color-border-hover);
+    border-radius: var(--radius-lg);
+
+    background: rgba(17, 19, 21, 0.5);
+  }
+
+  .case-study-visual__placeholder span {
+    font-size: clamp(2rem, 5vw, 5rem);
+    font-weight: 600;
+
+    letter-spacing: -0.05em;
+
+    text-align: center;
+  }
+
+  .case-study-story {
+    background: var(--color-bg-secondary);
+  }
+
+  .case-study-story__item {
+    display: grid;
+    grid-template-columns:
+      64px
+      minmax(260px, 0.85fr)
+      minmax(0, 1.15fr);
+
+    gap: clamp(32px, 6vw, 90px);
+
+    padding-block: var(--space-8);
+
+    border-top: 1px solid var(--color-border);
+  }
+
+  .case-study-story__item:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .case-study-story__number {
+    padding-top: 5px;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+  }
+
+  .case-study-story__heading p {
+    margin-bottom: var(--space-4);
+
+    color: var(--color-primary);
+
+    font-size: 0.72rem;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .case-study-story__heading h2 {
+    max-width: 620px;
+
+    margin-bottom: 0;
+
+    font-size: clamp(1.7rem, 3vw, 2.8rem);
+  }
+
+  .case-study-story__text {
+    max-width: 680px;
+  }
+
+  .case-study-story__text p {
+    margin-bottom: 0;
+
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .case-study-services {
+    background: var(--color-bg-primary);
+  }
+
+  .case-study-services__grid {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 0.8fr)
+      minmax(0, 1.2fr);
+
+    gap: clamp(64px, 10vw, 140px);
+  }
+
+  .case-study-services__intro h2 {
+    max-width: 680px;
+  }
+
+  .case-study-services__item {
+    display: grid;
+    grid-template-columns:
+      56px
+      minmax(0, 1fr);
+
+    gap: var(--space-4);
+
+    padding-block: var(--space-4);
+
+    border-top: 1px solid var(--color-border);
+  }
+
+  .case-study-services__item:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .case-study-services__item span {
+    color: var(--color-text-muted);
+
+    font-size: 0.72rem;
+    font-weight: 600;
+
+    letter-spacing: 0.1em;
+  }
+
+  .case-study-services__item p {
+    margin: 0;
+
+    color: var(--color-text-primary);
+  }
+
+  .case-study-gallery {
+    background: var(--color-bg-secondary);
+  }
+
+  .case-study-gallery__header {
+    margin-bottom: var(--space-8);
+  }
+
+  .case-study-gallery__header h2 {
+    max-width: 820px;
+
+    margin-bottom: 0;
+  }
+
+  .case-study-gallery__grid {
+    display: grid;
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: var(--space-6);
+  }
+
+  .case-study-gallery__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 420px;
+
+    padding: var(--space-6);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+
+    background: var(--color-bg-primary);
+
+    color: var(--color-text-muted);
+
+    text-align: center;
+  }
+
+  .case-study-gallery__placeholder--large {
+    grid-column: 1 / -1;
+
+    min-height: 600px;
+  }
+
+  .case-study-cta {
+    background: var(--color-primary);
+  }
+
+  .case-study-cta__inner {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1.3fr)
+      auto;
+
+    align-items: end;
+
+    gap: var(--space-8);
+  }
+
+  .case-study-cta__eyebrow {
+    color: rgba(17, 19, 21, 0.7);
+  }
+
+  .case-study-cta h2 {
+    max-width: 900px;
+
+    margin-bottom: 0;
+
+    color: var(--color-bg-primary);
+
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    line-height: 1;
+
+    letter-spacing: -0.045em;
+  }
+
+  .case-study-cta__action :global(.button--primary) {
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+
+    border-color: var(--color-bg-primary);
+  }
+
+  .case-study-cta__action :global(.button--primary:hover) {
+    background: transparent;
+    color: var(--color-bg-primary);
+  }
+
+  @media (max-width: 1000px) {
+    .case-study-story__item {
+      grid-template-columns:
+        52px
+        minmax(0, 1fr);
+
+      gap:
+        var(--space-5)
+        var(--space-6);
+    }
+
+    .case-study-story__text {
+      grid-column: 2;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .case-study-hero__grid,
+    .case-study-services__grid,
+    .case-study-cta__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .case-study-hero__grid {
+      gap: var(--space-8);
+    }
+
+    .case-study-visual__frame {
+      min-height: 480px;
+    }
+
+    .case-study-gallery__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .case-study-gallery__placeholder--large {
+      grid-column: auto;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .case-study-hero__title {
+      font-size: clamp(3rem, 14vw, 4.6rem);
+    }
+
+    .case-study-story__item {
+      grid-template-columns: 1fr;
+
+      gap: var(--space-4);
+
+      padding-block: var(--space-7);
+    }
+
+    .case-study-story__text {
+      grid-column: auto;
+    }
+
+    .case-study-story__number {
+      padding-top: 0;
+    }
+
+    .case-study-visual__frame {
+      min-height: 360px;
+    }
+
+    .case-study-visual__placeholder {
+      width: 82%;
+      min-height: 240px;
+    }
+
+    .case-study-gallery__placeholder,
+    .case-study-gallery__placeholder--large {
+      min-height: 300px;
+    }
+  }
+</style>

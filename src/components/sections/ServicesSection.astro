@@ -1,0 +1,41 @@
+---
+import SectionHeader
+  from "../ui/SectionHeader.astro";
+
+import ServiceCard
+  from "../services/ServiceCard.astro";
+
+import { services }
+  from "../../data/services.js";
+---
+
+<section class="services-section">
+  <div class="container">
+
+    <SectionHeader
+      eyebrow="Serviços"
+      title="Soluções digitais pensadas para fortalecer o negócio."
+      description="Da estratégia à implementação, cada solução é desenhada para resolver problemas concretos e criar uma base digital mais sólida."
+    />
+
+    <div class="services-section__list">
+      {
+        services.map((service) => (
+          <ServiceCard {...service} />
+        ))
+      }
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .services-section {
+    background:
+      var(--color-bg-secondary);
+  }
+
+  .services-section__list {
+    width: 100%;
+  }
+</style>

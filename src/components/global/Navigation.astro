@@ -1,0 +1,110 @@
+---
+import { navigation } from "../../data/navigation.js";
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav
+  class="navigation"
+  aria-label="Navegação principal"
+>
+  <ul class="navigation__list">
+    {
+      navigation.map((item) => {
+        const isActive =
+          item.href === "/"
+            ? currentPath === "/"
+            : currentPath.startsWith(item.href);
+
+        return (
+          <li>
+            <a
+              href={item.href}
+              class:list={[
+                "navigation__link",
+                {
+                  "navigation__link--active":
+                    isActive,
+                },
+              ]}
+              aria-current={
+                isActive
+                  ? "page"
+                  : undefined
+              }
+            >
+              {item.label}
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
+
+<style>
+  .navigation__list {
+    display: flex;
+    align-items: center;
+
+    gap: var(--space-6);
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  .navigation__link {
+    position: relative;
+
+    display: inline-flex;
+
+    padding-block: 8px;
+
+    color: var(--color-text-secondary);
+
+    font-size: 0.88rem;
+    font-weight: 500;
+
+    transition: color var(--transition-fast);
+  }
+
+  .navigation__link::after {
+    content: "";
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    height: 1px;
+
+    background: var(--color-primary);
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: transform var(--transition-fast);
+  }
+
+  .navigation__link:hover,
+  .navigation__link--active {
+    color: var(--color-text-primary);
+  }
+
+  .navigation__link--active::after {
+    transform: scaleX(1);
+  }
+
+  .navigation__link:focus-visible {
+    outline: 2px solid var(--color-primary-hover);
+    outline-offset: 4px;
+  }
+
+  @media (max-width: 1024px) {
+    .navigation {
+      display: none;
+    }
+  }
+</style>

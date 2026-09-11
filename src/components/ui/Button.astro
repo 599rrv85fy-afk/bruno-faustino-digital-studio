@@ -1,0 +1,92 @@
+---
+const {
+  href,
+  variant = "primary",
+  class: className = "",
+} = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    "button",
+    `button--${variant}`,
+    className,
+  ]}
+>
+  <slot />
+</a>
+
+<style>
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding:
+      12px
+      22px;
+
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+
+    font-size: 0.95rem;
+    font-weight: 500;
+    line-height: 1;
+
+    text-align: center;
+    text-decoration: none;
+
+    transition:
+      background-color var(--transition-fast),
+      color var(--transition-fast),
+      border-color var(--transition-fast),
+      transform var(--transition-fast);
+  }
+
+  .button--primary {
+    background: var(--color-text-primary);
+    color: var(--color-bg-primary);
+
+    border-color: var(--color-text-primary);
+  }
+
+  .button--primary:hover {
+    background: transparent;
+    color: var(--color-text-primary);
+  }
+
+  .button--secondary {
+    background: transparent;
+    color: var(--color-text-primary);
+
+    border-color: var(--color-border-hover);
+  }
+
+  .button--secondary:hover {
+    border-color: var(--color-text-primary);
+  }
+
+  .button:focus-visible {
+    outline: 2px solid var(--color-primary-hover);
+    outline-offset: 4px;
+  }
+
+  .button:active {
+    transform: translateY(1px);
+  }
+
+  @media (max-width: 640px) {
+    .button {
+      width: 100%;
+
+      min-height: 52px;
+
+      padding:
+        14px
+        20px;
+    }
+  }
+</style>

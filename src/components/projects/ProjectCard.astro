@@ -1,0 +1,208 @@
+---
+const {
+  title,
+  category,
+  year,
+  status,
+  excerpt,
+  href,
+  theme = "charcoal",
+} = Astro.props;
+---
+
+<article class:list={["project-card", `project-card--${theme}`]}>
+  <a href={href} class="project-card__link">
+    <div class="project-card__visual">
+      <div class="project-card__mockup" aria-hidden="true">
+        <span>{title}</span>
+      </div>
+
+      <span class="project-card__status">
+        {status}
+      </span>
+    </div>
+
+    <div class="project-card__meta">
+      <span>{category}</span>
+      <span>{year}</span>
+    </div>
+
+    <h3 class="project-card__title">
+      {title}
+    </h3>
+
+    <p class="project-card__description">
+      {excerpt}
+    </p>
+
+    <span class="project-card__action">
+      Ver projeto
+      <span aria-hidden="true">↗</span>
+    </span>
+  </a>
+</article>
+
+<style>
+  .project-card {
+    min-width: 0;
+  }
+
+  .project-card__link {
+    display: block;
+    color: inherit;
+  }
+
+  .project-card__visual {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    aspect-ratio: 16 / 10;
+
+    margin-bottom: var(--space-6);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+
+    overflow: hidden;
+  }
+
+  .project-card--slate .project-card__visual {
+    background:
+      linear-gradient(
+        145deg,
+        rgba(111, 130, 157, 0.3),
+        rgba(24, 27, 31, 1)
+      );
+  }
+
+  .project-card--stone .project-card__visual {
+    background:
+      linear-gradient(
+        145deg,
+        rgba(181, 180, 175, 0.18),
+        rgba(24, 27, 31, 1)
+      );
+  }
+
+  .project-card--charcoal .project-card__visual {
+    background:
+      linear-gradient(
+        145deg,
+        rgba(242, 240, 235, 0.08),
+        rgba(17, 19, 21, 1)
+      );
+  }
+
+  .project-card__mockup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 72%;
+    height: 72%;
+
+    padding: var(--space-6);
+
+    border: 1px solid var(--color-border-hover);
+    border-radius: var(--radius-lg);
+
+    background: rgba(17, 19, 21, 0.55);
+
+    box-shadow: var(--shadow-soft);
+
+    transition:
+      transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .project-card__mockup span {
+    color: var(--color-text-primary);
+
+    font-size: clamp(1.5rem, 3vw, 2.6rem);
+    font-weight: 600;
+
+    letter-spacing: -0.04em;
+  }
+
+  .project-card__status {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+
+    padding: 7px 11px;
+
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+
+    background: rgba(17, 19, 21, 0.72);
+
+    backdrop-filter: blur(10px);
+
+    color: var(--color-text-secondary);
+
+    font-size: 0.72rem;
+    font-weight: 500;
+  }
+
+  .project-card__meta {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+
+    margin-bottom: var(--space-4);
+
+    color: var(--color-text-muted);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .project-card__title {
+    margin-bottom: var(--space-4);
+
+    font-size: clamp(1.7rem, 2.5vw, 2.4rem);
+    font-weight: 500;
+  }
+
+  .project-card__description {
+    max-width: 620px;
+
+    margin-bottom: var(--space-5);
+
+    color: var(--color-text-secondary);
+  }
+
+  .project-card__action {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+
+    color: var(--color-text-primary);
+
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .project-card__action span {
+    transition: transform var(--transition-fast);
+  }
+
+  .project-card__link:hover .project-card__mockup {
+    transform: scale(1.025);
+  }
+
+  .project-card__link:hover .project-card__action span {
+    transform: translate(2px, -2px);
+  }
+
+  .project-card__link:focus-visible {
+    outline: 2px solid var(--color-primary-hover);
+    outline-offset: 8px;
+    border-radius: var(--radius-lg);
+  }
+</style>

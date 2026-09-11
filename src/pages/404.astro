@@ -1,0 +1,212 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/ui/Button.astro";
+---
+
+<BaseLayout
+  title="Página não encontrada — Bruno Faustino Digital Studio"
+  description="A página que procura não foi encontrada."
+  noindex={true}
+>
+  <section class="error-page">
+    <div class="container error-page__inner">
+
+      <div class="error-page__content">
+        <p class="error-page__code">
+          404
+        </p>
+
+        <h1 class="error-page__title">
+          Esta página não existe.
+        </h1>
+
+        <p class="error-page__description">
+          O endereço pode estar incorreto, a página pode ter sido movida
+          ou já não estar disponível.
+        </p>
+
+        <div class="error-page__actions">
+          <Button href="/">
+            Voltar ao início
+          </Button>
+
+          <Button
+            href="/contactos"
+            variant="secondary"
+          >
+            Contactos
+          </Button>
+        </div>
+      </div>
+
+      <div
+        class="error-page__visual"
+        aria-hidden="true"
+      >
+        <div class="error-page__mark">
+          BF
+        </div>
+
+        <div class="error-page__line"></div>
+
+        <p>
+          Page not found
+        </p>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .error-page {
+    display: flex;
+    align-items: center;
+
+    min-height: calc(100vh - 80px);
+
+    background: var(--color-bg-primary);
+  }
+
+  .error-page__inner {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1.15fr)
+      minmax(300px, 0.85fr);
+
+    align-items: center;
+
+    gap: clamp(64px, 10vw, 140px);
+  }
+
+  .error-page__content {
+    max-width: 820px;
+  }
+
+  .error-page__code {
+    margin-bottom: var(--space-6);
+
+    color: var(--color-primary);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .error-page__title {
+    max-width: 800px;
+
+    margin-bottom: var(--space-6);
+
+    font-size: clamp(3.5rem, 7vw, 7rem);
+    line-height: 0.95;
+
+    letter-spacing: -0.055em;
+  }
+
+  .error-page__description {
+    max-width: 620px;
+
+    margin-bottom: var(--space-7);
+
+    color: var(--color-text-secondary);
+
+    font-size: clamp(1.1rem, 1.7vw, 1.3rem);
+    line-height: 1.65;
+  }
+
+  .error-page__actions {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: var(--space-4);
+  }
+
+  .error-page__visual {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-height: 420px;
+
+    padding: var(--space-7);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(111, 130, 157, 0.14),
+        rgba(24, 27, 31, 1)
+      );
+
+    box-shadow: var(--shadow-soft);
+  }
+
+  .error-page__mark {
+    color: var(--color-text-primary);
+
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 700;
+
+    letter-spacing: -0.06em;
+  }
+
+  .error-page__line {
+    width: 100%;
+    height: 1px;
+
+    margin-block: auto;
+
+    background: var(--color-border);
+  }
+
+  .error-page__visual p {
+    margin-bottom: 0;
+
+    color: var(--color-text-muted);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .error-page {
+      min-height: auto;
+    }
+
+    .error-page__inner {
+      grid-template-columns: 1fr;
+
+      gap: var(--space-8);
+    }
+
+    .error-page__visual {
+      max-width: 560px;
+      min-height: 300px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .error-page__title {
+      font-size: clamp(3rem, 14vw, 4.6rem);
+    }
+
+    .error-page__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .error-page__visual {
+      min-height: 260px;
+
+      padding: var(--space-6);
+    }
+  }
+</style>

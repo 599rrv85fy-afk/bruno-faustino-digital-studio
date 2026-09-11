@@ -1,0 +1,89 @@
+@import "./tokens.css";
+@import "./reset.css";
+@import "./typography.css";
+@import "./utilities.css";
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-bg-primary);
+}
+
+html {
+  background: var(--color-bg-primary);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+main {
+  min-width: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 9999;
+
+  padding:
+    12px
+    18px;
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-text-primary);
+  color: var(--color-bg-primary);
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  transform: translateY(-200%);
+
+  transition: transform var(--transition-fast);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-primary-hover);
+  outline-offset: 4px;
+}
+
+section {
+  padding-block: var(--space-11);
+}
+
+@media (max-width: 1024px) {
+  section {
+    padding-block: var(--space-10);
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding-block: var(--space-9);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+}

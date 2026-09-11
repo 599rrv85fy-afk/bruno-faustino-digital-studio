@@ -1,0 +1,151 @@
+---
+import Button from "../ui/Button.astro";
+---
+
+<section class="final-cta">
+  <div class="container final-cta__inner">
+
+    <div class="final-cta__content">
+      <p class="final-cta__eyebrow">
+        Próximo passo
+      </p>
+
+      <h2 class="final-cta__title">
+        Tem um projeto em mente?
+        Vamos transformá-lo numa solução digital mais forte.
+      </h2>
+
+      <p class="final-cta__description">
+        Conte-me o que pretende construir, melhorar ou fazer crescer.
+        A partir daí, definimos a melhor abordagem para o projeto.
+      </p>
+
+      <div class="final-cta__action">
+        <Button href="/contactos">
+          Falar sobre um projeto
+        </Button>
+      </div>
+    </div>
+
+    <div class="final-cta__mark" aria-hidden="true">
+      BF
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .final-cta {
+    position: relative;
+    overflow: hidden;
+
+    background: var(--color-primary);
+  }
+
+  .final-cta__inner {
+    position: relative;
+
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1.35fr)
+      minmax(220px, 0.65fr);
+
+    align-items: end;
+
+    gap: var(--space-8);
+  }
+
+  .final-cta__content {
+    position: relative;
+    z-index: 1;
+
+    max-width: 960px;
+  }
+
+  .final-cta__eyebrow {
+    margin-bottom: var(--space-6);
+
+    color: rgba(17, 19, 21, 0.7);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .final-cta__title {
+    margin-bottom: var(--space-6);
+
+    color: var(--color-bg-primary);
+
+    font-size: clamp(2.6rem, 5vw, 5rem);
+    line-height: 1;
+
+    letter-spacing: -0.045em;
+  }
+
+  .final-cta__description {
+    max-width: 660px;
+
+    margin-bottom: var(--space-7);
+
+    color: rgba(17, 19, 21, 0.75);
+
+    font-size: 1.1rem;
+  }
+
+  .final-cta__action :global(.button--primary) {
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+
+    border-color: var(--color-bg-primary);
+  }
+
+  .final-cta__action :global(.button--primary:hover) {
+    background: transparent;
+    color: var(--color-bg-primary);
+  }
+
+  .final-cta__mark {
+    position: relative;
+    z-index: 0;
+
+    justify-self: end;
+
+    color: rgba(17, 19, 21, 0.12);
+
+    font-size: clamp(8rem, 18vw, 18rem);
+    font-weight: 700;
+
+    line-height: 0.72;
+    letter-spacing: -0.08em;
+
+    user-select: none;
+  }
+
+  @media (max-width: 900px) {
+    .final-cta__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .final-cta__mark {
+      position: absolute;
+
+      right: 0;
+      bottom: 0;
+
+      font-size: 12rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .final-cta__title {
+      font-size: clamp(2.4rem, 11vw, 3.6rem);
+    }
+
+    .final-cta__mark {
+      font-size: 9rem;
+    }
+  }
+</style>
