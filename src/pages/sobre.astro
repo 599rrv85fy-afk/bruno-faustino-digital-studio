@@ -9,7 +9,6 @@ import Button from "../components/ui/Button.astro";
 >
   <section class="about-hero">
     <div class="container about-hero__grid">
-
       <div class="about-hero__content">
         <p class="about-hero__eyebrow">
           Sobre
@@ -33,19 +32,29 @@ import Button from "../components/ui/Button.astro";
           digitais claras, eficazes e preparadas para evoluir.
         </p>
       </div>
-
     </div>
   </section>
 
   <section class="about-profile">
     <div class="container about-profile__grid">
-
       <div class="about-profile__visual">
-        <div class="about-profile__image">
-          <span>
-            Bruno Faustino
-          </span>
-        </div>
+        <figure class="about-profile__figure">
+          <div class="about-profile__image-frame">
+            <img
+              src="/images/profile/bruno-faustino-about.webp"
+              alt="Bruno Faustino, fundador da Bruno Faustino Digital Studio"
+              class="about-profile__image"
+              width="1122"
+              height="1402"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+
+          <figcaption>
+            Bruno Faustino · Digital Studio
+          </figcaption>
+        </figure>
       </div>
 
       <div class="about-profile__content">
@@ -76,13 +85,11 @@ import Button from "../components/ui/Button.astro";
           ou uma melhor experiência para quem utiliza o produto.
         </p>
       </div>
-
     </div>
   </section>
 
   <section class="about-studio">
     <div class="container about-studio__grid">
-
       <div>
         <p class="about-studio__eyebrow">
           Digital Studio
@@ -111,13 +118,11 @@ import Button from "../components/ui/Button.astro";
           problema — e não o contrário.
         </p>
       </div>
-
     </div>
   </section>
 
   <section class="about-principles">
     <div class="container about-principles__grid">
-
       <div class="about-principles__intro">
         <p class="about-principles__eyebrow">
           Princípios
@@ -129,16 +134,11 @@ import Button from "../components/ui/Button.astro";
       </div>
 
       <div class="about-principles__content">
-
         <div class="principle-line">
-          <span>
-            01
-          </span>
+          <span>01</span>
 
           <div>
-            <h3>
-              Clareza
-            </h3>
+            <h3>Clareza</h3>
 
             <p>
               Comunicação direta, estruturas simples e decisões que
@@ -148,14 +148,10 @@ import Button from "../components/ui/Button.astro";
         </div>
 
         <div class="principle-line">
-          <span>
-            02
-          </span>
+          <span>02</span>
 
           <div>
-            <h3>
-              Responsabilidade
-            </h3>
+            <h3>Responsabilidade</h3>
 
             <p>
               Tecnologia deve ser utilizada com critério, segurança,
@@ -165,14 +161,10 @@ import Button from "../components/ui/Button.astro";
         </div>
 
         <div class="principle-line">
-          <span>
-            03
-          </span>
+          <span>03</span>
 
           <div>
-            <h3>
-              Qualidade
-            </h3>
+            <h3>Qualidade</h3>
 
             <p>
               Design, conteúdo e tecnologia devem funcionar como um
@@ -182,14 +174,10 @@ import Button from "../components/ui/Button.astro";
         </div>
 
         <div class="principle-line">
-          <span>
-            04
-          </span>
+          <span>04</span>
 
           <div>
-            <h3>
-              Evolução contínua
-            </h3>
+            <h3>Evolução contínua</h3>
 
             <p>
               Produtos digitais, competências e negócios evoluem.
@@ -197,15 +185,12 @@ import Button from "../components/ui/Button.astro";
             </p>
           </div>
         </div>
-
       </div>
-
     </div>
   </section>
 
   <section class="about-technology">
     <div class="container about-technology__grid">
-
       <div>
         <p class="about-technology__eyebrow">
           Tecnologia
@@ -231,13 +216,11 @@ import Button from "../components/ui/Button.astro";
           performance, manutenção, eficiência ou resultados.
         </p>
       </div>
-
     </div>
   </section>
 
   <section class="about-cta">
     <div class="container about-cta__inner">
-
       <div>
         <p class="about-cta__eyebrow">
           Vamos trabalhar juntos
@@ -253,7 +236,6 @@ import Button from "../components/ui/Button.astro";
           Falar sobre um projeto
         </Button>
       </div>
-
     </div>
   </section>
 </BaseLayout>
@@ -314,65 +296,82 @@ import Button from "../components/ui/Button.astro";
   }
 
   .about-profile {
+    padding-block: var(--space-9);
+
     background: var(--color-bg-secondary);
   }
 
   .about-profile__grid {
     display: grid;
     grid-template-columns:
-      minmax(320px, 0.85fr)
-      minmax(0, 1.15fr);
+      300px
+      minmax(0, 1fr);
 
     align-items: center;
 
-    gap: clamp(64px, 10vw, 140px);
+    gap: clamp(52px, 5.5vw, 80px);
   }
 
   .about-profile__visual {
     min-width: 0;
+
+    transform: translateY(-14px);
   }
 
-  .about-profile__image {
-    display: flex;
-    align-items: flex-end;
+  .about-profile__figure {
+    width: 100%;
 
+    margin: 0;
+  }
+
+  .about-profile__image-frame {
+    width: 100%;
     aspect-ratio: 4 / 5;
-
-    padding: var(--space-6);
 
     border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
 
-    background:
-      linear-gradient(
-        160deg,
-        rgba(111, 130, 157, 0.18),
-        rgba(17, 19, 21, 1)
-      );
-
     overflow: hidden;
   }
 
-  .about-profile__image span {
+  .about-profile__image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center 12%;
+
+    transform: none;
+  }
+
+  .about-profile__figure figcaption {
+    margin-top: var(--space-3);
+
     color: var(--color-text-muted);
 
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 600;
 
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
+  .about-profile__content {
+    padding-top: 0;
+  }
+
   .about-profile__content h2 {
     max-width: 800px;
 
-    margin-bottom: var(--space-7);
+    margin-bottom: var(--space-6);
   }
 
   .about-profile__content > p {
     max-width: 700px;
 
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-4);
   }
 
   .about-profile__lead {
@@ -571,11 +570,15 @@ import Button from "../components/ui/Button.astro";
     }
 
     .about-profile__visual {
-      max-width: 560px;
+      transform: none;
     }
 
-    .about-profile__image {
-      aspect-ratio: 16 / 11;
+    .about-profile__figure {
+      width: min(100%, 320px);
+    }
+
+    .about-profile__content {
+      padding-top: 0;
     }
 
     .about-cta__action {
@@ -585,17 +588,44 @@ import Button from "../components/ui/Button.astro";
 
   @media (max-width: 640px) {
     .about-hero__title {
-      font-size: clamp(3rem, 14vw, 4.6rem);
+      font-size: clamp(3rem, 14vw, 4.4rem);
+    }
+
+    .about-profile {
+      padding-block: var(--space-8);
+    }
+
+    .about-profile__figure {
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .about-profile__image-frame {
+      aspect-ratio: 4 / 5;
     }
 
     .about-profile__image {
-      aspect-ratio: 4 / 3;
+      object-position: center 12%;
+
+      transform: none;
     }
 
     .principle-line {
       grid-template-columns:
-        42px
+        40px
         minmax(0, 1fr);
+
+      gap: var(--space-3);
+
+      padding-block: var(--space-5);
+    }
+
+    .about-cta h2 {
+      font-size: clamp(2.35rem, 11vw, 3.5rem);
+    }
+
+    .about-cta__action {
+      width: 100%;
     }
   }
 </style>

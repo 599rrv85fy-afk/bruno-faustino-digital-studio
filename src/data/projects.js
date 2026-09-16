@@ -2,7 +2,7 @@ export const projects = [
   {
     slug: "andreia-babo",
 
-    title: "Andreia Babo",
+    title: "Dra. Andreia Babo",
     category: "Medicina Dentária",
     year: "2026",
     status: "Em desenvolvimento",
@@ -13,6 +13,11 @@ export const projects = [
     href: "/projetos/andreia-babo",
     featured: true,
     theme: "slate",
+
+    coverImage: "/projects/andreia-babo-cover.jpg",
+    coverAlt:
+      "Retrato profissional da Dra. Andreia Babo em ambiente clínico.",
+    coverPosition: "center 24%",
 
     challenge: {
       title: "Construir uma presença digital própria e credível.",
@@ -49,9 +54,23 @@ export const projects = [
     },
 
     gallery: [
-      "Hero e posicionamento",
-      "Serviços clínicos",
-      "Contacto e conversão",
+      {
+        image: "/projects/andreia-babo/andreia-clinica.webp",
+        alt: "Dra. Andreia Babo durante um procedimento clínico com apoio de uma assistente.",
+        label: "Prática clínica",
+      },
+      {
+        image:
+          "/projects/andreia-babo/andreia-retrato-clinico.webp",
+        alt: "Retrato profissional da Dra. Andreia Babo com lupa clínica.",
+        label: "Autoridade profissional",
+      },
+      {
+        image:
+          "/projects/andreia-babo/andreia-tratamento.webp",
+        alt: "Dra. Andreia Babo e assistente durante um tratamento dentário.",
+        label: "Contexto de tratamento",
+      },
     ],
   },
 
@@ -125,6 +144,15 @@ export const projects = [
     href: "/projetos/imagine-dragons",
     featured: true,
     theme: "charcoal",
+
+    coverImage:
+      "/images/projects/imagine-dragons/project-cover.webp",
+
+    coverAlt:
+      "Conceito visual do website Imagine Dragons desenvolvido como projeto académico",
+
+    coverFit: "contain",
+    coverAspectRatio: "4 / 3",
 
     challenge: {
       title: "Criar um website musical completo com forte identidade visual.",

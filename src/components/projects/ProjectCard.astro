@@ -7,15 +7,53 @@ const {
   excerpt,
   href,
   theme = "charcoal",
+  coverImage,
+  coverAlt,
+  coverPosition,
+  coverFit = "cover",
+  coverAspectRatio = "4 / 5",
 } = Astro.props;
+
+const hasCover = Boolean(coverImage);
+
+const [coverWidth, coverHeight] = coverAspectRatio
+  .split("/")
+  .map(Number);
+
+const isLandscapeCover = coverWidth > coverHeight;
 ---
 
 <article class:list={["project-card", `project-card--${theme}`]}>
   <a href={href} class="project-card__link">
     <div class="project-card__visual">
-      <div class="project-card__mockup" aria-hidden="true">
-        <span>{title}</span>
-      </div>
+      {
+        hasCover ? (
+          <div
+            class:list={[
+              "project-card__media",
+              {
+                "project-card__media--landscape": isLandscapeCover,
+              },
+            ]}
+            style={{ aspectRatio: coverAspectRatio }}
+          >
+            <img
+              src={coverImage}
+              alt={coverAlt ?? `Imagem do projeto ${title}`}
+              class="project-card__image"
+              loading="lazy"
+              style={{
+                objectFit: coverFit,
+                objectPosition: coverPosition ?? "center",
+              }}
+            />
+          </div>
+        ) : (
+          <div class="project-card__mockup" aria-hidden="true">
+            <span>{title}</span>
+          </div>
+        )
+      }
 
       <span class="project-card__status">
         {status}
@@ -96,15 +134,14 @@ const {
       );
   }
 
-  .project-card__mockup {
+  .project-card__mockup,
+  .project-card__media {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 72%;
-    height: 72%;
-
-    padding: var(--space-6);
+    width: min(320px, 72%);
+    aspect-ratio: 4 / 5;
 
     border: 1px solid var(--color-border-hover);
     border-radius: var(--radius-lg);
@@ -113,8 +150,18 @@ const {
 
     box-shadow: var(--shadow-soft);
 
+    overflow: hidden;
+
     transition:
       transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .project-card__media--landscape {
+    width: min(520px, 78%);
+  }
+
+  .project-card__mockup {
+    padding: var(--space-6);
   }
 
   .project-card__mockup span {
@@ -124,6 +171,16 @@ const {
     font-weight: 600;
 
     letter-spacing: -0.04em;
+    text-align: center;
+  }
+
+  .project-card__image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
   }
 
   .project-card__status {
@@ -192,7 +249,8 @@ const {
     transition: transform var(--transition-fast);
   }
 
-  .project-card__link:hover .project-card__mockup {
+  .project-card__link:hover .project-card__mockup,
+  .project-card__link:hover .project-card__media {
     transform: scale(1.025);
   }
 
@@ -204,5 +262,12 @@ const {
     outline: 2px solid var(--color-primary-hover);
     outline-offset: 8px;
     border-radius: var(--radius-lg);
+  }
+
+  @media (max-width: 640px) {
+    .project-card__mockup,
+    .project-card__media:not(.project-card__media--landscape) {
+      width: min(280px, 78%);
+    }
   }
 </style>

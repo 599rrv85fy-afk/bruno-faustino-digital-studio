@@ -11,7 +11,6 @@ import { projects } from "../data/projects.js";
 >
   <section class="projects-hero">
     <div class="container projects-hero__grid">
-
       <div class="projects-hero__content">
         <p class="projects-hero__eyebrow">
           Projetos
@@ -34,13 +33,11 @@ import { projects } from "../data/projects.js";
           forma transparente.
         </p>
       </div>
-
     </div>
   </section>
 
   <section class="projects-list">
     <div class="container">
-
       <div class="projects-list__header">
         <p>
           Portefólio
@@ -62,17 +59,20 @@ import { projects } from "../data/projects.js";
               excerpt={project.excerpt}
               href={project.href}
               theme={project.theme}
+              coverImage={project.coverImage}
+              coverAlt={project.coverAlt}
+              coverPosition={project.coverPosition}
+              coverFit={project.coverFit}
+              coverAspectRatio={project.coverAspectRatio}
             />
           ))
         }
       </div>
-
     </div>
   </section>
 
   <section class="projects-context">
     <div class="container projects-context__grid">
-
       <div>
         <p class="projects-context__eyebrow">
           Contexto
@@ -95,13 +95,11 @@ import { projects } from "../data/projects.js";
           que ainda não possam ser comprovados.
         </p>
       </div>
-
     </div>
   </section>
 
   <section class="projects-cta">
     <div class="container projects-cta__inner">
-
       <div>
         <p class="projects-cta__eyebrow">
           Próximo projeto
@@ -122,7 +120,6 @@ import { projects } from "../data/projects.js";
           Falar sobre um projeto
         </Button>
       </div>
-
     </div>
   </section>
 </BaseLayout>
