@@ -29,22 +29,6 @@ import Button from "../ui/Button.astro";
         </Button>
       </div>
     </div>
-
-    <div class="hero__visual" aria-hidden="true">
-      <div class="hero__visual-frame">
-        <div class="hero__visual-mark">
-          BF
-        </div>
-
-        <div class="hero__visual-line"></div>
-
-        <div class="hero__visual-copy">
-          <span>Estratégia</span>
-          <span>Tecnologia</span>
-          <span>Resultados</span>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -53,21 +37,33 @@ import Button from "../ui/Button.astro";
     display: flex;
     align-items: center;
 
-    min-height: calc(100vh - 80px);
+    min-height: calc(100svh - 80px);
 
-    padding-block: clamp(96px, 12vw, 160px);
+    padding-block: clamp(96px, 10vw, 144px);
+
+    background-color: var(--color-bg-primary);
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(15, 17, 21, 0.98) 0%,
+        rgba(15, 17, 21, 0.94) 30%,
+        rgba(15, 17, 21, 0.78) 50%,
+        rgba(15, 17, 21, 0.34) 72%,
+        rgba(15, 17, 21, 0.12) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(15, 17, 21, 0.12) 0%,
+        rgba(15, 17, 21, 0.08) 60%,
+        rgba(15, 17, 21, 0.4) 100%
+      ),
+      url("/images/hero/bruno-faustino-digital-studio-hero-wide.webp");
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 
     overflow: hidden;
-  }
-
-  .hero__inner {
-    display: grid;
-    grid-template-columns:
-      minmax(0, 1.3fr)
-      minmax(320px, 0.7fr);
-
-    align-items: center;
-    gap: clamp(64px, 8vw, 120px);
   }
 
   .hero__content {
@@ -87,11 +83,11 @@ import Button from "../ui/Button.astro";
   }
 
   .hero__title {
-    max-width: 1050px;
+    max-width: 900px;
 
     margin-bottom: var(--space-7);
 
-    font-size: clamp(3.6rem, 7vw, 7.2rem);
+    font-size: clamp(3.6rem, 5.5vw, 6.3rem);
     line-height: 0.94;
 
     letter-spacing: -0.055em;
@@ -115,123 +111,54 @@ import Button from "../ui/Button.astro";
     gap: var(--space-4);
   }
 
-  .hero__visual {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .hero__visual-frame {
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    width: min(100%, 420px);
-    aspect-ratio: 4 / 5;
-
-    padding: clamp(28px, 4vw, 48px);
-
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-xl);
-
-    background:
-      linear-gradient(
-        145deg,
-        rgba(111, 130, 157, 0.12),
-        rgba(24, 27, 31, 0.98)
-      );
-
-    box-shadow: var(--shadow-soft);
-
-    overflow: hidden;
-  }
-
-  .hero__visual-frame::before {
-    content: "";
-
-    position: absolute;
-    top: -20%;
-    right: -30%;
-
-    width: 320px;
-    height: 320px;
-
-    border-radius: 50%;
-
-    background:
-      radial-gradient(
-        circle,
-        rgba(111, 130, 157, 0.28),
-        rgba(111, 130, 157, 0)
-      );
-
-    filter: blur(8px);
-  }
-
-  .hero__visual-mark {
-    position: relative;
-    z-index: 1;
-
-    color: var(--color-text-primary);
-
-    font-size: clamp(3rem, 5vw, 5.5rem);
-    font-weight: 700;
-
-    letter-spacing: -0.06em;
-  }
-
-  .hero__visual-line {
-    position: relative;
-    z-index: 1;
-
-    width: 100%;
-    height: 1px;
-
-    background: var(--color-border);
-  }
-
-  .hero__visual-copy {
-    position: relative;
-    z-index: 1;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: var(--space-2);
-
-    color: var(--color-text-secondary);
-
-    font-size: 0.9rem;
-    font-weight: 500;
-
-    letter-spacing: 0.02em;
-  }
-
   @media (max-width: 1100px) {
-    .hero__inner {
-      grid-template-columns: 1fr;
+    .hero {
+      background-image:
+        linear-gradient(
+          90deg,
+          rgba(15, 17, 21, 0.98) 0%,
+          rgba(15, 17, 21, 0.94) 42%,
+          rgba(15, 17, 21, 0.68) 72%,
+          rgba(15, 17, 21, 0.38) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(15, 17, 21, 0.18) 0%,
+          rgba(15, 17, 21, 0.16) 60%,
+          rgba(15, 17, 21, 0.5) 100%
+        ),
+        url("/images/hero/bruno-faustino-digital-studio-hero-wide.webp");
+
+      background-position: 62% center;
     }
 
-    .hero__visual {
-      justify-content: flex-start;
-    }
-
-    .hero__visual-frame {
-      width: min(100%, 520px);
-      aspect-ratio: 16 / 9;
+    .hero__content,
+    .hero__title {
+      max-width: 780px;
     }
   }
 
   @media (max-width: 768px) {
     .hero {
-      min-height: auto;
+      min-height: calc(100svh - 72px);
 
       padding-block: 88px 80px;
-    }
 
-    .hero__inner {
-      gap: var(--space-9);
+      background-image:
+        linear-gradient(
+          90deg,
+          rgba(15, 17, 21, 0.96) 0%,
+          rgba(15, 17, 21, 0.88) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(15, 17, 21, 0.16) 0%,
+          rgba(15, 17, 21, 0.3) 55%,
+          rgba(15, 17, 21, 0.72) 100%
+        ),
+        url("/images/hero/bruno-faustino-digital-studio-hero-wide.webp");
+
+      background-position: 70% center;
     }
 
     .hero__title {
@@ -245,11 +172,6 @@ import Button from "../ui/Button.astro";
     .hero__actions {
       flex-direction: column;
       align-items: stretch;
-    }
-
-    .hero__visual-frame {
-      aspect-ratio: 16 / 10;
-      padding: var(--space-6);
     }
   }
 </style>
