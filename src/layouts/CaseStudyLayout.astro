@@ -303,7 +303,9 @@ const isLandscapeCover = coverWidth > coverHeight;
                   "case-study-gallery__item",
                   {
                     "case-study-gallery__item--large":
-                      index === 0,
+                      index === 0 ||
+                      (typeof item === "object" &&
+                        item.layout === "wide"),
                   },
                 ]}
               >
@@ -1014,6 +1016,7 @@ const isLandscapeCover = coverWidth > coverHeight;
       min-height: 300px;
     }
   }
+
   @media (max-width: 900px) {
     .case-study-visual__editorial--landscape {
       flex-direction: column;

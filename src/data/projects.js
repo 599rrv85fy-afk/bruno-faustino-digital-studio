@@ -191,9 +191,30 @@ export const projects = [
     },
 
     gallery: [
-      "Homepage",
-      "Discografia",
-      "Tour e contactos",
+      {
+        image:
+          "/images/projects/imagine-dragons/homepage.webp",
+        alt:
+          "Página inicial do website conceptual Imagine Dragons.",
+        label: "Homepage",
+        layout: "wide",
+      },
+      {
+        image:
+          "/images/projects/imagine-dragons/discografia.webp",
+        alt:
+          "Página de discografia do website conceptual Imagine Dragons.",
+        label: "Discografia",
+        layout: "wide",
+      },
+      {
+        image:
+          "/images/projects/imagine-dragons/tour.webp",
+        alt:
+          "Página de tour e concertos do website conceptual Imagine Dragons.",
+        label: "Tour e concertos",
+        layout: "wide",
+      },
     ],
   },
 ];
