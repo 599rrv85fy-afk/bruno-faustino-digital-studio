@@ -149,11 +149,11 @@ const isLandscapeCover = coverWidth > coverHeight;
 
       <div class="case-study-overview__content">
         <h2>
-          {project.challenge.title}
+          {project.overview?.title ?? project.challenge.title}
         </h2>
 
         <p class="case-study-overview__lead">
-          {project.challenge.text}
+          {project.overview?.text ?? project.challenge.text}
         </p>
       </div>
     </div>
@@ -302,6 +302,8 @@ const isLandscapeCover = coverWidth > coverHeight;
                 class:list={[
                   "case-study-gallery__item",
                   {
+                    "case-study-gallery__item--wide":
+                      typeof item === "object" && item.layout === "wide",
                     "case-study-gallery__item--large":
                       index === 0 ||
                       (typeof item === "object" &&
@@ -1039,5 +1041,15 @@ const isLandscapeCover = coverWidth > coverHeight;
       .case-study-visual__status {
       justify-content: center;
     }
+  }
+  /* Capturas de websites: manter a imagem inteira em qualquer ecrã. */
+  .case-study-gallery__item--wide .case-study-gallery__media {
+    aspect-ratio: auto;
+  }
+
+  .case-study-gallery__item--wide .case-study-gallery__image {
+    height: auto;
+    object-fit: contain;
+    transform: none;
   }
 </style>

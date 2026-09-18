@@ -154,6 +154,12 @@ export const projects = [
     coverFit: "contain",
     coverAspectRatio: "4 / 3",
 
+    overview: {
+      title: "Um projeto académico dedicado ao universo Imagine Dragons.",
+      text:
+        "Desenvolvido no âmbito da formação Full Stack Web Development, este website conceptual reúne a apresentação da banda, a discografia, os concertos e os contactos numa experiência visual escura, inspirada na sua identidade musical.",
+    },
+
     challenge: {
       title: "Criar um website musical completo com forte identidade visual.",
       text:
