@@ -34,7 +34,7 @@ export const projects = [
     solution: {
       title: "Website profissional com foco em marca pessoal.",
       text:
-        "O projeto irá combinar identidade visual, arquitetura de informação, desenvolvimento responsivo, SEO técnico, conteúdo orientado para pacientes e uma experiência de contacto simples.",
+        "O projeto irá combinar identidade visual, arquitetura de informação, desenvolvimento responsivo, SEO técnico, conteúdo orientado para pacientes e uma experiência de contacto simples. Foi também integrada uma assistente virtual com IA que esclarece como marcar consulta e responde a questões sobre os serviços disponíveis e o percurso profissional da Dra. Andreia Babo.",
     },
 
     services: [
@@ -45,6 +45,7 @@ export const projects = [
       "SEO local",
       "Performance",
       "Integração de contacto",
+      "Assistente virtual com IA",
     ],
 
     results: {
