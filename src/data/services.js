@@ -1,30 +1,26 @@
 export const services = [
   {
-    number: "01",
-    title: "Websites",
-    description:
-      "Experiências digitais profissionais, rápidas e orientadas para transformar presença online em valor para o negócio.",
-    href: "/servicos#websites",
+    "number": "01",
+    "title": "Web",
+    "description": "Websites profissionais, rápidos e orientados para objetivos reais.",
+    "href": "/servicos#websites"
   },
   {
-    number: "02",
-    title: "Estratégia Digital",
-    description:
-      "Planeamento da presença digital, definição de prioridades e identificação das oportunidades com maior impacto.",
-    href: "/servicos#estrategia-digital",
+    "number": "02",
+    "title": "Automation & AI",
+    "description": "Automação de tarefas, integração de ferramentas e aplicação prática de IA.",
+    "href": "/servicos#automacao-tecnologia"
   },
   {
-    number: "03",
-    title: "SEO & Visibilidade",
-    description:
-      "Otimização da estrutura, conteúdo e presença online para tornar o negócio mais fácil de encontrar e compreender.",
-    href: "/servicos#seo-visibilidade",
+    "number": "03",
+    "title": "Growth",
+    "description": "Medição, visibilidade, desempenho e conversão com base em dados.",
+    "href": "/servicos#seo-visibilidade"
   },
   {
-    number: "04",
-    title: "Automação & Tecnologia",
-    description:
-      "Integração de ferramentas e processos digitais para reduzir tarefas repetitivas e melhorar a eficiência.",
-    href: "/servicos#automacao-tecnologia",
-  },
+    "number": "04",
+    "title": "Care",
+    "description": "Manutenção, acompanhamento e evolução depois do lançamento.",
+    "href": "/servicos#care"
+  }
 ];

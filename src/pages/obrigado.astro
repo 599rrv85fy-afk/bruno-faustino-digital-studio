@@ -4,7 +4,7 @@ import Button from "../components/ui/Button.astro";
 ---
 
 <BaseLayout
-  title="Mensagem enviada — Bruno Faustino Digital Studio"
+  title="Pedido enviado — Bruno Faustino Digital Studio"
   description="Obrigado pelo contacto. A sua mensagem foi enviada com sucesso."
   noindex={true}
 >
@@ -12,7 +12,7 @@ import Button from "../components/ui/Button.astro";
     <div class="container thank-you__grid">
       <div class="thank-you__content">
         <p class="thank-you__eyebrow">
-          Mensagem enviada
+          Pedido enviado
         </p>
 
         <h1>
@@ -20,13 +20,14 @@ import Button from "../components/ui/Button.astro";
         </h1>
 
         <p class="thank-you__text">
-          A sua mensagem foi enviada com sucesso. Entrarei em contacto assim
-          que possível para perceber melhor o projeto e os próximos passos.
+          Recebi a sua mensagem e normalmente respondo por email até 2 dias úteis.
         </p>
 
+        <p class="thank-you__secondary">Entretanto, pode continuar a conhecer os serviços e projetos da Bruno Faustino Digital Studio.</p>
+
         <div class="thank-you__actions">
-          <Button href="/">
-            Voltar ao início
+          <Button href="/servicos">
+            Ver serviços
           </Button>
 
           <Button
@@ -43,7 +44,7 @@ import Button from "../components/ui/Button.astro";
         aria-hidden="true"
       >
         <div class="thank-you__mark">
-          BF
+          <img src="/images/brand/bf-branco.svg" alt="" width="145" height="103" />
         </div>
 
         <span>
@@ -59,7 +60,7 @@ import Button from "../components/ui/Button.astro";
     display: flex;
     align-items: center;
 
-    min-height: calc(100vh - 160px);
+    padding-block: var(--space-8);
 
     background: var(--color-bg-primary);
   }
@@ -68,11 +69,11 @@ import Button from "../components/ui/Button.astro";
     display: grid;
     grid-template-columns:
       minmax(0, 1.15fr)
-      minmax(320px, 0.85fr);
+      minmax(220px, 0.65fr);
 
     align-items: center;
 
-    gap: var(--space-10);
+    gap: var(--space-8);
   }
 
   .thank-you__content {
@@ -82,7 +83,7 @@ import Button from "../components/ui/Button.astro";
   .thank-you__eyebrow {
     margin-bottom: var(--space-5);
 
-    color: var(--color-primary);
+    color: var(--color-primary-hover);
 
     font-size: 0.75rem;
     font-weight: 600;
@@ -105,6 +106,13 @@ import Button from "../components/ui/Button.astro";
     font-size: 1.08rem;
   }
 
+  .thank-you__secondary {
+    max-width: 620px;
+    margin-bottom: var(--space-6);
+  }
+
+  .thank-you__mark img { width: 116px; height: auto; }
+
   .thank-you__actions {
     display: flex;
     flex-wrap: wrap;
@@ -119,7 +127,7 @@ import Button from "../components/ui/Button.astro";
     flex-direction: column;
     justify-content: space-between;
 
-    min-height: 430px;
+    min-height: 260px;
 
     padding: var(--space-7);
 
@@ -153,7 +161,7 @@ import Button from "../components/ui/Button.astro";
       1px solid
       rgba(255, 255, 255, 0.08);
 
-    color: var(--color-text-muted);
+    color: var(--color-text-secondary);
 
     font-size: 0.75rem;
     font-weight: 600;
@@ -168,7 +176,7 @@ import Button from "../components/ui/Button.astro";
     }
 
     .thank-you__visual {
-      min-height: 300px;
+      min-height: 180px;
     }
   }
 
@@ -182,7 +190,7 @@ import Button from "../components/ui/Button.astro";
     }
 
     .thank-you__visual {
-      min-height: 240px;
+      min-height: 160px;
 
       padding: var(--space-6);
     }

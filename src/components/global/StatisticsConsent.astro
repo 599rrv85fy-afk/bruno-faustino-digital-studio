@@ -1,0 +1,161 @@
+<aside id="statistics-consent" class="statistics-consent" aria-labelledby="statistics-consent-title" hidden>
+  <h2 id="statistics-consent-title" tabindex="-1">Privacidade e estatísticas</h2>
+  <p>Utilizamos estatísticas anónimas para compreender a utilização do website e melhorar a experiência.</p>
+  <p id="statistics-consent-state" class="statistics-consent__state"></p>
+  <div class="statistics-consent__actions">
+    <button type="button" data-statistics-choice="accepted">Aceitar estatísticas</button>
+    <button type="button" data-statistics-choice="declined">Continuar sem estatísticas</button>
+  </div>
+  <p id="statistics-consent-error" role="status" hidden></p>
+</aside>
+
+<script>
+  const preferenceKey = "bfds-statistics-consent";
+  type Preference = "accepted" | "declined" | null;
+  const panel = document.getElementById("statistics-consent")!;
+  const opener = document.getElementById("privacy-preferences") as HTMLButtonElement;
+  const heading = document.getElementById("statistics-consent-title")!;
+  const stateLabel = document.getElementById("statistics-consent-state")!;
+  const error = document.getElementById("statistics-consent-error")!;
+  let returnFocus: HTMLElement | null = null;
+
+  function readPreference(): Preference {
+    try {
+      const value = localStorage.getItem(preferenceKey);
+      return value === "accepted" || value === "declined" ? value : null;
+    } catch {
+      return null;
+    }
+  }
+
+  let preference = readPreference();
+  let scriptStarted = false;
+  const trackerWindow = window as typeof window & {
+    bfdsBeforeStatisticsSend?: (type: string, payload: unknown) => unknown;
+  };
+  // Also guard sends while a withdrawal reload is pending or storage is unavailable.
+  trackerWindow.bfdsBeforeStatisticsSend = (_type, payload) =>
+    preference === "accepted" && readPreference() === "accepted" ? payload : false;
+
+  function loadStatistics() {
+    if (preference !== "accepted" || scriptStarted) return;
+    scriptStarted = true;
+    const script = document.createElement("script");
+    script.id = "bfds-umami";
+    script.async = true;
+    script.src = "https://cloud.umami.is/script.js";
+    script.dataset.websiteId = "44ffbd8e-37ee-4230-b030-18c8d42c2ad4";
+    script.dataset.beforeSend = "bfdsBeforeStatisticsSend";
+    document.head.append(script);
+  }
+
+  function showPreferences(moveFocus = false) {
+    stateLabel.textContent = preference === "accepted"
+      ? "Preferência atual: estatísticas aceites."
+      : preference === "declined" ? "Preferência atual: sem estatísticas." : "";
+    stateLabel.hidden = !preference;
+    panel.hidden = false;
+    opener.setAttribute("aria-expanded", "true");
+    if (moveFocus) {
+      returnFocus = document.activeElement as HTMLElement;
+      heading.focus();
+    }
+  }
+
+  function hidePreferences() {
+    const focusInside = panel.contains(document.activeElement);
+    panel.hidden = true;
+    opener.setAttribute("aria-expanded", "false");
+    if (focusInside) (returnFocus || opener).focus({ preventScroll: true });
+    returnFocus = null;
+  }
+
+  opener.hidden = false;
+  opener.addEventListener("click", () => showPreferences(true));
+  panel.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") hidePreferences();
+  });
+  panel.querySelectorAll<HTMLButtonElement>("[data-statistics-choice]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const choice = button.dataset.statisticsChoice as Exclude<Preference, null>;
+      // Fail closed: do not start analytics if the choice cannot be saved.
+      preference = choice === "declined" ? "declined" : null;
+      try {
+        localStorage.setItem(preferenceKey, choice);
+      } catch {
+        error.textContent = "Não foi possível guardar a preferência neste navegador. As estatísticas estão desativadas nesta página. Pode continuar a navegar.";
+        error.hidden = false;
+        return;
+      }
+      preference = choice;
+      error.hidden = true;
+      hidePreferences();
+      if (choice === "declined" && scriptStarted) {
+        // Removing a script element alone cannot stop an already running tracker.
+        window.location.reload();
+      } else {
+        loadStatistics();
+      }
+    });
+  });
+
+  function syncPreference() {
+    preference = readPreference();
+    if (scriptStarted && preference !== "accepted") {
+      window.location.reload();
+      return;
+    }
+    if (preference) hidePreferences();
+    else showPreferences();
+    loadStatistics();
+  }
+  window.addEventListener("storage", (event) => {
+    if (event.key === preferenceKey || event.key === null) syncPreference();
+  });
+  window.addEventListener("pageshow", (event) => {
+    if (event.persisted) syncPreference();
+  });
+  if (!preference) showPreferences();
+  loadStatistics();
+</script>
+
+<style>
+  .statistics-consent {
+    position: fixed;
+    inset: auto 24px 24px auto;
+    z-index: 90;
+    width: min(540px, calc(100% - 48px));
+    max-height: calc(100dvh - 48px);
+    overflow-y: auto;
+    padding: 24px;
+    border: 1px solid var(--color-border-hover);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+    box-shadow: var(--shadow-soft);
+  }
+  .statistics-consent[hidden] { display: none; }
+  .statistics-consent h2 { margin: 0 0 12px; font-size: 1.05rem; letter-spacing: -0.02em; }
+  .statistics-consent p { margin: 0 0 18px; color: var(--color-text-secondary); font-size: 0.875rem; line-height: 1.6; }
+  .statistics-consent .statistics-consent__state { font-size: 0.8rem; }
+  .statistics-consent__actions { display: flex; gap: 12px; }
+  .statistics-consent button {
+    flex: 1;
+    min-height: 44px;
+    padding: 12px;
+    border: 1px solid var(--color-border-hover);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .statistics-consent button:hover { border-color: var(--color-primary-hover); }
+  .statistics-consent :focus-visible { outline: 2px solid var(--color-primary-hover); outline-offset: 3px; }
+  #statistics-consent-error { margin: 16px 0 0; }
+  @media (max-width: 540px) {
+    .statistics-consent { inset: auto 12px 12px; width: auto; padding: 20px; max-height: calc(100dvh - 24px); }
+    .statistics-consent__actions { flex-direction: column; gap: 8px; }
+  }
+</style>

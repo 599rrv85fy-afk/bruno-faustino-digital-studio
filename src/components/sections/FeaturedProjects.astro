@@ -3,22 +3,22 @@ import SectionHeader from "../ui/SectionHeader.astro";
 import ProjectCard from "../projects/ProjectCard.astro";
 import { projects } from "../../data/projects.js";
 
-const featuredProjects = projects.filter((project) => project.featured);
+const featuredProjects = projects.filter((project) => project.showOnHome);
 ---
 
 <section class="featured-projects">
   <div class="container">
 
     <SectionHeader
-      eyebrow="Projetos"
-      title="Trabalho pensado para criar impacto real."
-      description="Uma seleção de projetos reais e conceptuais que demonstram estratégia, design, desenvolvimento e evolução digital."
+      eyebrow="Projetos selecionados"
+      title="Trabalho pensado para resolver problemas reais."
+      description="Uma seleção de projetos onde estratégia, design e tecnologia são aplicados a necessidades concretas de cada negócio."
     />
 
     <div class="featured-projects__grid">
       {
         featuredProjects.map((project) => (
-          <ProjectCard {...project} />
+          <ProjectCard {...project} excerpt={project.homeExcerpt ?? project.excerpt} year={undefined} />
         ))
       }
     </div>
@@ -50,12 +50,6 @@ const featuredProjects = projects.filter((project) => project.featured);
     gap:
       var(--space-9)
       var(--space-7);
-  }
-
-  .featured-projects__grid > :nth-child(3) {
-    grid-column: 1 / -1;
-
-    width: 100%;
   }
 
   .featured-projects__footer {
@@ -102,12 +96,6 @@ const featuredProjects = projects.filter((project) => project.featured);
       grid-template-columns: 1fr;
 
       gap: var(--space-8);
-    }
-
-    .featured-projects__grid > :nth-child(3) {
-      grid-column: auto;
-
-      width: 100%;
     }
 
     .featured-projects__footer {

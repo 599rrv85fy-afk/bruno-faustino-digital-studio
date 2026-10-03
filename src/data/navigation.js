@@ -1,22 +1,6 @@
 export const navigation = [
-  {
-    label: "Início",
-    href: "/",
-  },
-  {
-    label: "Sobre",
-    href: "/sobre",
-  },
-  {
-    label: "Serviços",
-    href: "/servicos",
-  },
-  {
-    label: "Projetos",
-    href: "/projetos",
-  },
-  {
-    label: "Contactos",
-    href: "/contactos",
-  },
+  { label: "Serviços", href: "/servicos" },
+  { label: "Projetos", href: "/projetos" },
+  { label: "Sobre", href: "/sobre" },
+  { label: "Contactos", href: "/contactos" },
 ];

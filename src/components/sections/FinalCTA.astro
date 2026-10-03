@@ -7,17 +7,15 @@ import Button from "../ui/Button.astro";
 
     <div class="final-cta__content">
       <p class="final-cta__eyebrow">
-        Próximo passo
+        Vamos conversar
       </p>
 
       <h2 class="final-cta__title">
-        Tem um projeto em mente?
-        Vamos transformá-lo numa solução digital mais forte.
+        Tem um projeto em mente ou um problema digital por resolver?
       </h2>
 
       <p class="final-cta__description">
-        Conte-me o que pretende construir, melhorar ou fazer crescer.
-        A partir daí, definimos a melhor abordagem para o projeto.
+        Começamos por perceber a necessidade e avaliar se faz sentido trabalhar em conjunto.
       </p>
 
       <div class="final-cta__action">
@@ -28,7 +26,7 @@ import Button from "../ui/Button.astro";
     </div>
 
     <div class="final-cta__mark" aria-hidden="true">
-      BF
+      <img src="/images/brand/bf-branco.svg" alt="" width="145" height="103" loading="lazy" />
     </div>
 
   </div>
@@ -122,6 +120,14 @@ import Button from "../ui/Button.astro";
     letter-spacing: -0.08em;
 
     user-select: none;
+  }
+
+  .final-cta__mark img {
+    display: block;
+    width: 1em;
+    height: auto;
+    filter: brightness(0);
+    opacity: 0.12;
   }
 
   @media (max-width: 900px) {

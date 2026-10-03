@@ -24,7 +24,7 @@ const activeSocialLinks = socialLinks.filter(
           aria-label="Bruno Faustino Digital Studio — Página inicial"
         >
           <span class="site-footer__mark" aria-hidden="true">
-            BF
+            <img src="/images/brand/bf-branco.svg" alt="" width="145" height="103" />
           </span>
 
           <span class="site-footer__name">
@@ -38,8 +38,7 @@ const activeSocialLinks = socialLinks.filter(
         </p>
 
         <p class="site-footer__description">
-          Estratégia, tecnologia e soluções digitais para construir
-          negócios mais fortes no mundo digital.
+          Estúdio digital independente para profissionais e pequenas empresas que querem melhorar a presença digital, simplificar processos e usar melhor a tecnologia.
         </p>
       </div>
 
@@ -82,12 +81,10 @@ const activeSocialLinks = socialLinks.filter(
                 Falar sobre um projeto
               </a>
             </li>
-
             <li>
-              <a href="mailto:hello@brunofaustino.pt">
-                hello@brunofaustino.pt
-              </a>
+              <a href="mailto:info@brunofaustino.pt">info@brunofaustino.pt</a>
             </li>
+
           </ul>
         </div>
 
@@ -138,6 +135,10 @@ const activeSocialLinks = socialLinks.filter(
         <a href="/cookies">
           Cookies
         </a>
+
+        <button id="privacy-preferences" type="button" aria-controls="statistics-consent" aria-expanded="false" hidden>
+          Preferências de privacidade
+        </button>
 
         <a href="/termos">
           Termos
@@ -190,17 +191,15 @@ const activeSocialLinks = socialLinks.filter(
     display: flex;
     align-items: center;
     justify-content: center;
-
+    flex-shrink: 0;
     width: 40px;
     height: 40px;
+  }
 
-    border: 1px solid var(--color-border-hover);
-    border-radius: var(--radius-md);
-
-    font-size: 0.8rem;
-    font-weight: 700;
-
-    letter-spacing: -0.03em;
+  .site-footer__mark img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
   .site-footer__name {
@@ -291,6 +290,7 @@ const activeSocialLinks = socialLinks.filter(
 
   .site-footer__column a:focus-visible,
   .site-footer__legal a:focus-visible,
+  .site-footer__legal button:focus-visible,
   .site-footer__logo:focus-visible {
     outline: 2px solid var(--color-primary-hover);
     outline-offset: 4px;
@@ -323,7 +323,15 @@ const activeSocialLinks = socialLinks.filter(
     gap: var(--space-5);
   }
 
-  .site-footer__legal a {
+  .site-footer__legal button {
+    padding: 0;
+    border: 0;
+    background: none;
+    text-align: left;
+  }
+
+  .site-footer__legal a,
+  .site-footer__legal button {
     color: var(--color-text-muted);
 
     font-size: 0.8rem;
@@ -331,7 +339,8 @@ const activeSocialLinks = socialLinks.filter(
     transition: color var(--transition-fast);
   }
 
-  .site-footer__legal a:hover {
+  .site-footer__legal a:hover,
+  .site-footer__legal button:hover {
     color: var(--color-text-primary);
   }
 

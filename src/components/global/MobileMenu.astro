@@ -39,7 +39,7 @@ const currentPath = Astro.url.pathname;
       </ul>
     </nav>
 
-    <a href="/contactos" class="mobile-menu__cta">
+    <a href={Astro.url.pathname.replace(/\/$/, "") === "/contactos" ? "#formulario" : "/contactos"} class="mobile-menu__cta">
       Falar sobre um projeto
     </a>
   </div>

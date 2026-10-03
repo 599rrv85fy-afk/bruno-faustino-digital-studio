@@ -9,14 +9,14 @@ import Button from "../ui/Button.astro";
         Build better. Grow smarter.
       </p>
 
+      <p class="hero__brand-line">Negócios mais fortes no mundo digital.</p>
+
       <h1 class="hero__title">
-        Negócios mais fortes no mundo digital.
+        Presença digital mais forte. Tecnologia que simplifica o negócio.
       </h1>
 
       <p class="hero__description">
-        Estratégia, tecnologia e desenvolvimento digital
-        orientados para criar experiências melhores,
-        negócios mais eficientes e crescimento sustentável.
+        Ajudo profissionais independentes e pequenas empresas a melhorar websites, processos digitais e utilização de tecnologia.
       </p>
 
       <div class="hero__actions">
@@ -82,13 +82,20 @@ import Button from "../ui/Button.astro";
     text-transform: uppercase;
   }
 
+  .hero__brand-line {
+    margin-bottom: var(--space-5);
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+  }
+
   .hero__title {
     max-width: 900px;
 
     margin-bottom: var(--space-7);
 
-    font-size: clamp(3.6rem, 5.5vw, 6.3rem);
-    line-height: 0.94;
+    font-size: clamp(2.8rem, 4.3vw, 4.5rem);
+    line-height: 1.06;
+    text-wrap: balance;
 
     letter-spacing: -0.055em;
   }
@@ -162,7 +169,7 @@ import Button from "../ui/Button.astro";
     }
 
     .hero__title {
-      font-size: clamp(3rem, 15vw, 5rem);
+      font-size: clamp(2.1rem, 8vw, 3.6rem);
     }
 
     .hero__description {

@@ -12,7 +12,7 @@ import Button from "../ui/Button.astro";
       aria-label="Bruno Faustino Digital Studio — Página inicial"
     >
       <span class="brand__mark" aria-hidden="true">
-        BF
+        <img src="/images/brand/bf-branco.svg" alt="" width="145" height="103" />
       </span>
 
       <span class="brand__name">
@@ -25,7 +25,7 @@ import Button from "../ui/Button.astro";
       <Navigation />
 
       <div class="site-header__cta">
-        <Button href="/contactos">
+        <Button href={Astro.url.pathname.replace(/\/$/, "") === "/contactos" ? "#formulario" : "/contactos"}>
           Falar sobre um projeto
         </Button>
       </div>
@@ -84,19 +84,15 @@ import Button from "../ui/Button.astro";
     display: flex;
     align-items: center;
     justify-content: center;
-
+    flex-shrink: 0;
     width: 38px;
     height: 38px;
+  }
 
-    border: 1px solid var(--color-border-hover);
-    border-radius: var(--radius-md);
-
-    color: var(--color-text-primary);
-
-    font-size: 0.8rem;
-    font-weight: 700;
-
-    letter-spacing: -0.03em;
+  .brand__mark img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
   .brand__name {

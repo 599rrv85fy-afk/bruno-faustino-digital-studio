@@ -17,7 +17,13 @@ const siteURL =
 export default defineConfig({
   site: siteURL,
 
+  redirects: {
+    "/projetos/empresa-irmao": "/projetos/rs-experiences",
+  },
+
   integrations: [
-    sitemap(),
+    sitemap({
+      filter: (page) => new URL(page).pathname.replace(/\/+$/, "") !== "/obrigado",
+    }),
   ],
 });

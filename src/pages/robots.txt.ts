@@ -1,7 +1,8 @@
 import type { APIRoute } from "astro";
+import { preventIndexing } from "../utils/indexing";
 
 export const GET: APIRoute = ({ site }) => {
-  if (!site) {
+  if (preventIndexing || !site) {
     return new Response(
       [
         "User-agent: *",

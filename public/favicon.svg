@@ -1,37 +1,5 @@
-<svg
-  xmlns="http://www.w3.org/2000/svg"
-  viewBox="0 0 64 64"
-  role="img"
-  aria-label="BF"
->
-  <rect
-    width="64"
-    height="64"
-    rx="14"
-    fill="#111315"
-  />
-
-  <rect
-    x="1"
-    y="1"
-    width="62"
-    height="62"
-    rx="13"
-    fill="none"
-    stroke="#6f829d"
-    stroke-opacity="0.55"
-  />
-
-  <text
-    x="32"
-    y="38"
-    text-anchor="middle"
-    font-family="Inter, Arial, sans-serif"
-    font-size="24"
-    font-weight="700"
-    fill="#f2f0eb"
-    letter-spacing="-1.5"
-  >
-    BF
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Bruno Faustino Digital Studio">
+  <rect width="64" height="64" rx="14" fill="#111315" />
+  <rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="#6f829d" stroke-opacity="0.55" />
+  <svg x="8" y="14.95" width="48" height="34.1" viewBox="0 0 145 103"><g fill="#FFFFFF"><path fill-rule="evenodd" d="M0 0H37C56 0 68 10 68 26C68 36 63 43 55 47C67 51 75 60 75 74C75 91 62 103 42 103H0V44H36C49 44 57 37 57 26C57 16 50 11 37 11H0ZM11 55V92H41C55 92 64 85 64 74C64 62 55 55 41 55Z"/><path d="M77 0H145V11H77ZM77 44H131V55H88V103H77Z"/></g></svg>
 </svg>

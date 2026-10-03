@@ -1,85 +1,37 @@
 ---
+import { projectHref } from "../../data/projects.js";
 const {
-  title,
-  category,
-  year,
-  status,
-  excerpt,
-  href,
-  theme = "charcoal",
-  coverImage,
-  coverAlt,
-  coverPosition,
-  coverFit = "cover",
-  coverAspectRatio = "4 / 5",
+  title, nature, sector, year, status, excerpt, notice, theme = "charcoal",
+  details = [], coverImage, coverAlt, coverPosition, coverFit = "contain",
+  coverAspectRatio = "4 / 3", actionLabel = "Ver projeto", variant = "default",
 } = Astro.props;
-
+const href = projectHref(Astro.props);
+const Tag = href ? "a" : "div";
 const hasCover = Boolean(coverImage);
-
-const [coverWidth, coverHeight] = coverAspectRatio
-  .split("/")
-  .map(Number);
-
+const [coverWidth, coverHeight] = coverAspectRatio.split("/").map(Number);
 const isLandscapeCover = coverWidth > coverHeight;
 ---
-
-<article class:list={["project-card", `project-card--${theme}`]}>
-  <a href={href} class="project-card__link">
-    <div class="project-card__visual">
-      {
-        hasCover ? (
-          <div
-            class:list={[
-              "project-card__media",
-              {
-                "project-card__media--landscape": isLandscapeCover,
-              },
-            ]}
-            style={{ aspectRatio: coverAspectRatio }}
-          >
-            <img
-              src={coverImage}
-              alt={coverAlt ?? `Imagem do projeto ${title}`}
-              class="project-card__image"
-              loading="lazy"
-              style={{
-                objectFit: coverFit,
-                objectPosition: coverPosition ?? "center",
-              }}
-            />
-          </div>
-        ) : (
-          <div class="project-card__mockup" aria-hidden="true">
-            <span>{title}</span>
-          </div>
-        )
-      }
-
-      <span class="project-card__status">
-        {status}
-      </span>
+<article class:list={["project-card", `project-card--${theme}`, `project-card--${variant}`]}>
+  <Tag href={href} class="project-card__link">
+    {hasCover && <div class="project-card__visual">
+      <div class:list={["project-card__media", {"project-card__media--landscape": isLandscapeCover}]} style={{aspectRatio: coverAspectRatio}}>
+        <img src={coverImage} alt={coverAlt ?? title} class="project-card__image" loading="lazy" decoding="async" style={{objectFit:coverFit,objectPosition:coverPosition ?? "center"}} />
+      </div>
+    </div>}
+    <div class="project-card__content">
+      <div class="project-card__meta"><span>{nature}</span>{year && <span>{year}</span>}</div>
+      <h3 class="project-card__title">{title}</h3>
+      <dl class="project-card__facts">
+        <div><dt>Setor</dt><dd>{sector}</dd></div>
+        <div><dt>Estado</dt><dd>{status}</dd></div>
+      </dl>
+      <p class="project-card__description">{excerpt}</p>
+      {notice && <p class="project-card__notice">{notice}</p>}
+      {details.length > 0 && <dl class="project-card__details">{details.map((detail) => <div><dt>{detail.label}</dt><dd>{detail.text}</dd></div>)}</dl>}
+      {href && <span class="project-card__action">{actionLabel}<span aria-hidden="true">↗</span></span>}
     </div>
-
-    <div class="project-card__meta">
-      <span>{category}</span>
-      <span>{year}</span>
-    </div>
-
-    <h3 class="project-card__title">
-      {title}
-    </h3>
-
-    <p class="project-card__description">
-      {excerpt}
-    </p>
-
-    <span class="project-card__action">
-      Ver projeto
-      <span aria-hidden="true">↗</span>
-    </span>
-  </a>
+  </Tag>
 </article>
-
 <style>
   .project-card {
     min-width: 0;
@@ -234,6 +186,33 @@ const isLandscapeCover = coverWidth > coverHeight;
     color: var(--color-text-secondary);
   }
 
+  .project-card__mockup--pending {
+    width: min(520px, 78%);
+    aspect-ratio: 36 / 25;
+  }
+
+  .project-card__mockup--pending span {
+    font-size: clamp(1.15rem, 2vw, 1.6rem);
+  }
+
+  .project-card__details {
+    display: grid;
+    gap: var(--space-4);
+    margin: 0 0 var(--space-6);
+  }
+
+  .project-card__details dt {
+    color: var(--color-text-primary);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .project-card__details dd {
+    margin: var(--space-1) 0 0;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+  }
+
   .project-card__action {
     display: inline-flex;
     align-items: center;
@@ -269,5 +248,22 @@ const isLandscapeCover = coverWidth > coverHeight;
     .project-card__media:not(.project-card__media--landscape) {
       width: min(280px, 78%);
     }
+  }
+
+  .project-card__meta { flex-wrap: wrap; color: var(--color-text-secondary); }
+  .project-card__facts { display: grid; gap: 0.75rem; margin: 0 0 1.5rem; }
+  .project-card__facts div { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 0.75rem; }
+  .project-card__facts dt { font-size: 0.8rem; color: var(--color-text-secondary); }
+  .project-card__facts dd { margin: 0; font-size: 0.95rem; color: var(--color-text-primary); }
+  .project-card__notice { padding-left: 1rem; border-left: 2px solid var(--color-primary); color: var(--color-text-secondary); font-size: 0.95rem; }
+  .project-card__content { min-width: 0; }
+  .project-card__title { overflow-wrap: anywhere; }
+  .project-card--primary .project-card__link { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+  .project-card--primary .project-card__visual { margin-bottom: 0; }
+  .project-card--primary .project-card__media { width: 92%; }
+  .project-card--planned { padding: clamp(1.5rem, 3vw, 3rem); border: 1px solid var(--color-border); border-radius: var(--radius-xl); }
+  .project-card--planned .project-card__title { font-size: clamp(1.5rem, 2.5vw, 2.2rem); }
+  @media (max-width: 900px) {
+    .project-card--primary .project-card__link { grid-template-columns: 1fr; }
   }
 </style>

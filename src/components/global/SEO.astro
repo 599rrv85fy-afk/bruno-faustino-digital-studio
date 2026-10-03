@@ -1,4 +1,6 @@
 ---
+import { preventIndexing } from "../../utils/indexing";
+
 const {
   title = "Bruno Faustino Digital Studio",
   description = "Estratégia, tecnologia e soluções digitais para negócios mais fortes.",
@@ -10,13 +12,8 @@ const {
 
 const brandName = "Bruno Faustino Digital Studio";
 
-const productionSite =
-  import.meta.env.PUBLIC_SITE_URL ||
-  Astro.site?.toString();
-
-const siteURL = productionSite
-  ? new URL(productionSite)
-  : null;
+// Use the same configured origin as the sitemap and robots.txt.
+const siteURL = Astro.site ?? null;
 
 const canonicalURL = canonical
   ? siteURL
@@ -32,10 +29,8 @@ const imageURL = image
     : new URL(image, Astro.url.origin)
   : null;
 
-const isDevelopment = import.meta.env.DEV;
-
 const robotsContent =
-  noindex || isDevelopment
+  noindex || preventIndexing
     ? "noindex, nofollow"
     : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 

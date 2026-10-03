@@ -3,11 +3,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectCard from "../components/projects/ProjectCard.astro";
 import Button from "../components/ui/Button.astro";
 import { projects } from "../data/projects.js";
+const visibleProjects = projects.filter((project) => project.showOnProjects);
+const roles = ["primary", "complementary", "planned"];
 ---
 
 <BaseLayout
   title="Projetos — Bruno Faustino Digital Studio"
-  description="Projetos de estratégia, desenvolvimento web, SEO e tecnologia desenvolvidos pela Bruno Faustino Digital Studio."
+  description="Portefólio com um projeto real de Medicina Dentária, um website académico de música e um projeto previsto de turismo. Conheça a intervenção e o estado de cada trabalho."
 >
   <section class="projects-hero">
     <div class="container projects-hero__grid">
@@ -17,7 +19,7 @@ import { projects } from "../data/projects.js";
         </p>
 
         <h1 class="projects-hero__title">
-          Trabalho pensado para resolver problemas e criar impacto.
+          Projetos, decisões e trabalho desenvolvido.
         </h1>
       </div>
 
@@ -28,9 +30,8 @@ import { projects } from "../data/projects.js";
         </p>
 
         <p>
-          Alguns trabalhos encontram-se ainda em desenvolvimento.
-          Quando isso acontece, o estado do projeto é apresentado de
-          forma transparente.
+          Cada projeto identifica a sua natureza, o setor e o estado atual,
+          distinguindo trabalho concluído, lançamento pendente e projetos por iniciar.
         </p>
       </div>
     </div>
@@ -50,22 +51,12 @@ import { projects } from "../data/projects.js";
 
       <div class="projects-list__grid">
         {
-          projects.map((project) => (
-            <ProjectCard
-              title={project.title}
-              category={project.category}
-              year={project.year}
-              status={project.status}
-              excerpt={project.excerpt}
-              href={project.href}
-              theme={project.theme}
-              coverImage={project.coverImage}
-              coverAlt={project.coverAlt}
-              coverPosition={project.coverPosition}
-              coverFit={project.coverFit}
-              coverAspectRatio={project.coverAspectRatio}
-            />
-          ))
+          roles.flatMap((role) => visibleProjects.filter((project) => project.listingRole === role).map((project) => (
+            <div class:list={["projects-list__item", `projects-list__item--${role}`]}>
+              <p class="projects-list__role">{role === "primary" ? "Projeto em destaque" : role === "complementary" ? "Trabalho académico" : "Projeto previsto"}</p>
+              <ProjectCard {...project} variant={role} />
+            </div>
+          )))
         }
       </div>
     </div>
@@ -85,8 +76,8 @@ import { projects } from "../data/projects.js";
 
       <div class="projects-context__content">
         <p class="projects-context__lead">
-          O portefólio combina projetos em desenvolvimento, trabalho
-          académico e casos conceptuais.
+          O portefólio reúne um projeto real com implementação concluída
+          e lançamento pendente, um exercício académico concluído e um projeto previsto.
         </p>
 
         <p>
@@ -217,9 +208,9 @@ import { projects } from "../data/projects.js";
     gap: var(--space-7);
   }
 
-  .projects-list__grid > :nth-child(3) {
-    grid-column: 1 / -1;
-  }
+  .projects-list__item { min-width: 0; }
+  .projects-list__item--primary { grid-column: 1 / -1; padding-bottom: var(--space-8); border-bottom: 1px solid var(--color-border); }
+  .projects-list__role { color: var(--color-primary); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: var(--space-5); }
 
   .projects-context {
     background: var(--color-bg-primary);
@@ -324,9 +315,7 @@ import { projects } from "../data/projects.js";
       grid-template-columns: 1fr;
     }
 
-    .projects-list__grid > :nth-child(3) {
-      grid-column: auto;
-    }
+
   }
 
   @media (max-width: 640px) {

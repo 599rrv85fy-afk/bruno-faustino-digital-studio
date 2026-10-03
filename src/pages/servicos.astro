@@ -4,532 +4,319 @@ import Button from "../components/ui/Button.astro";
 ---
 
 <BaseLayout
-  title="Serviços — Bruno Faustino Digital Studio"
-  description="Websites, estratégia digital, SEO e automação para fortalecer a presença digital e criar soluções orientadas para resultados."
+  title="Serviços | Bruno Faustino Digital Studio"
+  description="Web, automação e IA, otimização e acompanhamento digital para profissionais independentes e pequenas empresas, com soluções ajustadas às necessidades reais do negócio."
 >
   <section class="services-hero">
     <div class="container services-hero__grid">
-
-      <div class="services-hero__content">
-        <p class="services-hero__eyebrow">
-          Serviços
-        </p>
-
-        <h1 class="services-hero__title">
-          Soluções digitais pensadas para resolver problemas reais.
-        </h1>
+      <div>
+        <p class="services-hero__eyebrow">Serviços</p>
+        <h1 class="services-hero__title">Soluções digitais pensadas para resolver problemas reais.</h1>
       </div>
-
       <div class="services-hero__intro">
-        <p class="services-hero__lead">
-          Estratégia, tecnologia e execução combinadas para criar
-          uma presença digital mais forte e eficiente.
-        </p>
-
-        <p>
-          Cada projeto parte das necessidades do negócio. Os serviços podem
-          funcionar de forma independente ou ser combinados numa solução
-          mais completa.
-        </p>
+        <p class="services-hero__lead">Trabalho com profissionais independentes e pequenas empresas para criar, melhorar e acompanhar soluções digitais que respondem a necessidades concretas do negócio.</p>
+        <nav class="services-hero__anchors" aria-label="Áreas de serviço">
+          <a href="#websites">Web</a>
+          <a href="#automacao-tecnologia">Automation &amp; AI</a>
+          <a href="#seo-visibilidade">Growth</a>
+          <a href="#care">Care</a>
+        </nav>
+        <Button href="/contactos">Falar sobre um projeto</Button>
       </div>
-
     </div>
   </section>
 
-  <section
-    id="websites"
-    class="service-detail service-detail--secondary"
-  >
+  <section id="websites" class="service-detail service-detail--secondary" aria-labelledby="websites-title">
     <div class="container service-detail__grid">
-
       <div class="service-detail__intro">
-        <span class="service-detail__number">
-          01
-        </span>
-
-        <p class="service-detail__eyebrow">
-          Websites
-        </p>
-
-        <h2>
-          Mais do que presença online. Uma base digital para o negócio.
-        </h2>
+        <p class="service-detail__eyebrow"><span class="service-detail__number" aria-hidden="true">01</span> Web</p>
+        <h2 id="websites-title">Criar ou renovar uma base digital sólida.</h2>
       </div>
-
       <div class="service-detail__content">
-
-        <div class="service-detail__block">
-          <p class="service-detail__label">
-            O problema
-          </p>
-
-          <p class="service-detail__lead">
-            Um website desatualizado, lento ou pouco claro pode reduzir
-            confiança, dificultar contactos e transmitir uma imagem inferior
-            à qualidade real do negócio.
-          </p>
-        </div>
-
-        <div class="service-detail__block">
-          <p class="service-detail__label">
-            A solução
-          </p>
-
-          <p>
-            Desenvolvimento de websites profissionais, responsivos e
-            orientados para objetivos concretos, combinando estrutura,
-            conteúdo, design, performance e experiência do utilizador.
-          </p>
-
-          <ul>
-            <li>Arquitetura e planeamento de conteúdo</li>
-            <li>UX/UI</li>
-            <li>Desenvolvimento responsivo</li>
-            <li>Performance e acessibilidade</li>
-            <li>SEO técnico</li>
-            <li>Integração com ferramentas e serviços externos</li>
-          </ul>
-        </div>
-
-        <div class="service-detail__block">
-          <p class="service-detail__label">
-            O impacto
-          </p>
-
-          <p>
-            Uma presença digital mais credível, rápida e preparada para
-            transformar visitas em contactos, pedidos ou oportunidades
-            de negócio.
-          </p>
-        </div>
-
+        <p class="service-detail__lead">Desenvolvimento de websites profissionais pensados para comunicar com clareza, funcionar bem em diferentes dispositivos e apoiar os objetivos reais do negócio.</p>
+        <p class="service-detail__label">Pode incluir</p>
+        <ul>
+          <li>Criação de websites</li>
+          <li>Renovação de websites existentes</li>
+          <li>Organização de páginas e conteúdos</li>
+          <li>Desenvolvimento responsivo</li>
+          <li>Performance e qualidade técnica</li>
+          <li>SEO técnico inicial</li>
+          <li>Integrações básicas ligadas ao website</li>
+        </ul>
+        <p class="service-detail__note">Integrações mais extensas ou fluxos entre ferramentas são avaliados em Automation &amp; AI.</p>
+        <a class="service-detail__proof" href="/projetos/andreia-babo">Ver projeto Dra. Andreia Babo <span aria-hidden="true">↗</span></a>
       </div>
-
     </div>
   </section>
 
-  <section
-    id="estrategia-digital"
-    class="service-detail"
-  >
+  <section id="automacao-tecnologia" class="service-detail" aria-labelledby="automacao-tecnologia-title">
     <div class="container service-detail__grid">
-
       <div class="service-detail__intro">
-        <span class="service-detail__number">
-          02
-        </span>
-
-        <p class="service-detail__eyebrow">
-          Estratégia Digital
-        </p>
-
-        <h2>
-          Prioridades claras antes de investir em tecnologia.
-        </h2>
+        <p class="service-detail__eyebrow"><span class="service-detail__number" aria-hidden="true">02</span> Automation &amp; AI</p>
+        <h2 id="automacao-tecnologia-title">Menos tarefas repetitivas. Mais tempo para o que importa.</h2>
       </div>
-
       <div class="service-detail__content">
-
-        <div class="service-detail__block">
-          <p class="service-detail__label">
-            O problema
-          </p>
-
-          <p class="service-detail__lead">
-            Ferramentas, canais e iniciativas digitais sem uma direção clara
-            tornam difícil perceber onde investir tempo, atenção e orçamento.
-          </p>
-        </div>
-
-        <div class="service-detail__block">
-          <p class="service-detail__label">
-            A solução
-          </p>
-
-          <p>
-            Análise da presença digital atual, identificação dos principais
-            problemas e oportunidades e definição de prioridades alinhadas
-            com os objetivos do negócio.
-          </p>
-
-          <ul>
-            <li>Análise da presença digital existente</li>
-            <li>Identificação de problemas e oportunidades</li>
-            <li>Definição de prioridades</li>
-            <li>Posicionamento digital</li>
-            <li>Estrutura de canais e conteúdos</li>
-            <li>Roadmap de evolução</li>
-          </ul>
-        </div>
-
-        <div class="service-detail__block">
-          <p class="service-detail__label">
-            O impacto
-          </p>
-
-          <p>
-            Decisões mais fundamentadas, maior foco e uma direção digital
-            coerente com os objetivos reais do negócio.
-          </p>
-        </div>
-
+        <p class="service-detail__lead">Integração de ferramentas e automação de tarefas simples para reduzir trabalho manual, melhorar fluxos e aplicar IA quando existe utilidade concreta.</p>
+        <p class="service-detail__label">Exemplos</p>
+        <ul>
+          <li>Formulário → registo → notificação</li>
+          <li>Encaminhamento automático de informação</li>
+          <li>Integração entre ferramentas</li>
+          <li>Automatização de tarefas administrativas simples</li>
+          <li>Utilização de IA em tarefas específicas e delimitadas</li>
+        </ul>
+        <p class="service-detail__note">Cada solução é avaliada de acordo com as ferramentas existentes, o nível de complexidade e a capacidade de a testar e manter com segurança.</p>
       </div>
-
     </div>
   </section>
 
-  <section
-    id="seo-visibilidade"
-    class="service-detail service-detail--secondary"
-  >
+  <section id="seo-visibilidade" class="service-detail service-detail--secondary" aria-labelledby="seo-visibilidade-title">
     <div class="container service-detail__grid">
-
       <div class="service-detail__intro">
-        <span class="service-detail__number">
-          03
-        </span>
-
-        <p class="service-detail__eyebrow">
-          SEO &amp; Visibilidade
-        </p>
-
-        <h2>
-          Ser encontrado por quem já procura aquilo que oferece.
-        </h2>
+        <p class="service-detail__eyebrow"><span class="service-detail__number" aria-hidden="true">03</span> Growth</p>
+        <h2 id="seo-visibilidade-title">Medir o que existe. Melhorar o que faz sentido.</h2>
       </div>
-
       <div class="service-detail__content">
-
-        <div class="service-detail__block">
-          <p class="service-detail__label">
-            O problema
-          </p>
-
-          <p class="service-detail__lead">
-            Mesmo um bom serviço perde oportunidades quando potenciais
-            clientes não conseguem encontrar, compreender ou confiar
-            no negócio.
-          </p>
-        </div>
-
-        <div class="service-detail__block">
-          <p class="service-detail__label">
-            A solução
-          </p>
-
-          <p>
-            Otimização técnica, estrutural e editorial para tornar a
-            informação do negócio mais clara para utilizadores, motores
-            de pesquisa e outros sistemas de descoberta.
-          </p>
-
-          <ul>
-            <li>SEO on-page</li>
-            <li>SEO técnico</li>
-            <li>Estrutura semântica</li>
-            <li>SEO local</li>
-            <li>Google Business Profile</li>
-            <li>Dados estruturados</li>
-            <li>Conteúdo e FAQs</li>
-            <li>Consistência da informação empresarial</li>
-          </ul>
-        </div>
-
-        <div class="service-detail__block">
-          <p class="service-detail__label">
-            O impacto
-          </p>
-
-          <p>
-            Melhor capacidade de descoberta, informação mais consistente
-            e uma base digital mais preparada para pesquisa tradicional
-            e novas formas de descoberta através de sistemas de IA.
-          </p>
-        </div>
-
+        <p class="service-detail__lead">Otimização da presença digital com base em informação observável, procurando melhorar visibilidade, desempenho e percurso até ao contacto.</p>
+        <p class="service-detail__label">Pode incluir</p>
+        <ul>
+          <li>Análise de desempenho</li>
+          <li>SEO e visibilidade orgânica</li>
+          <li>Melhoria da estrutura e conteúdo</li>
+          <li>Análise do percurso de contacto</li>
+          <li>Otimização de conversão</li>
+          <li>Acompanhamento de indicadores relevantes</li>
+        </ul>
+        <p class="service-detail__note">Growth não corresponde a gestão de publicidade, redes sociais ou marketing completo. O foco está na melhoria dos ativos digitais existentes.</p>
       </div>
-
     </div>
   </section>
 
-  <section
-    id="automacao-tecnologia"
-    class="service-detail"
-  >
+  <section id="care" class="service-detail" aria-labelledby="care-title">
     <div class="container service-detail__grid">
-
       <div class="service-detail__intro">
-        <span class="service-detail__number">
-          04
-        </span>
-
-        <p class="service-detail__eyebrow">
-          Automação &amp; Tecnologia
-        </p>
-
-        <h2>
-          Menos tarefas repetitivas. Mais tempo para trabalho de valor.
-        </h2>
+        <p class="service-detail__eyebrow"><span class="service-detail__number" aria-hidden="true">04</span> Care</p>
+        <h2 id="care-title">Manter estável. Acompanhar. Evoluir.</h2>
       </div>
-
       <div class="service-detail__content">
-
-        <div class="service-detail__block">
-          <p class="service-detail__label">
-            O problema
-          </p>
-
-          <p class="service-detail__lead">
-            Processos manuais, informação dispersa e tarefas repetitivas
-            consomem tempo e aumentam a possibilidade de erros.
-          </p>
-        </div>
-
-        <div class="service-detail__block">
-          <p class="service-detail__label">
-            A solução
-          </p>
-
-          <p>
-            Integração de ferramentas e criação de fluxos digitais que
-            simplifiquem processos e reduzam trabalho manual desnecessário.
-          </p>
-
-          <ul>
-            <li>Integração entre plataformas</li>
-            <li>Automação de tarefas repetitivas</li>
-            <li>Fluxos de contacto e follow-up</li>
-            <li>Integração de formulários e CRM</li>
-            <li>Automação de dados</li>
-            <li>IA aplicada a processos quando acrescenta valor</li>
-          </ul>
-        </div>
-
-        <div class="service-detail__block">
-          <p class="service-detail__label">
-            O impacto
-          </p>
-
-          <p>
-            Processos mais eficientes, menos trabalho manual e uma operação
-            digital com maior capacidade para acompanhar o crescimento
-            do negócio.
-          </p>
-        </div>
-
+        <p class="service-detail__lead">Acompanhamento depois da entrega para manter os ativos digitais atualizados, funcionais e preparados para evoluir.</p>
+        <p class="service-detail__label">Pode incluir</p>
+        <ul>
+          <li>Manutenção técnica</li>
+          <li>Atualizações de conteúdo</li>
+          <li>Pequenas alterações visuais ou funcionais</li>
+          <li>Correções</li>
+          <li>Monitorização básica</li>
+          <li>Melhorias contínuas</li>
+          <li>Apoio em integrações existentes</li>
+        </ul>
+        <p class="service-detail__mode">Acompanhamento pontual ou recorrente, com âmbito acordado.</p>
+        <p class="service-detail__note">Novas funcionalidades ou alterações de maior dimensão são avaliadas como trabalho adicional. Projetos de terceiros ficam sujeitos a avaliação técnica prévia.</p>
       </div>
+    </div>
+  </section>
 
+  <section class="services-approach" aria-label="Como se define o trabalho">
+    <div class="container service-detail__grid">
+      <div class="service-detail__intro">
+        <p class="services-approach__eyebrow">Antes de executar</p>
+        <h2>Primeiro perceber. Depois decidir.</h2>
+      </div>
+      <div class="service-detail__content">
+        <p class="service-detail__lead">Cada projeto começa por compreender o negócio, identificar prioridades e definir o que faz sentido fazer antes de escolher ferramentas ou executar soluções.</p>
+        <p class="services-approach__note">A primeira conversa serve para perceber a necessidade e avaliar o enquadramento. Um diagnóstico aprofundado, quando necessário, é tratado como trabalho específico.</p>
+      </div>
     </div>
   </section>
 
   <section class="services-cta">
     <div class="container services-cta__inner">
-
       <div>
-        <p class="services-cta__eyebrow">
-          Próximo passo
-        </p>
-
-        <h2>
-          Não sabe exatamente de que serviço precisa?
-        </h2>
-
-        <p>
-          Começamos pelo problema e definimos a abordagem mais adequada.
-        </p>
+        <p class="services-cta__eyebrow">Próximo passo</p>
+        <h2>Não precisa de saber exatamente de que serviço precisa.</h2>
+        <p class="services-cta__description">Começamos por perceber a necessidade, definir prioridades e avaliar qual a abordagem mais adequada.</p>
       </div>
-
       <div class="services-cta__action">
-        <Button href="/contactos">
-          Falar sobre um projeto
-        </Button>
+        <Button href="/contactos">Falar sobre um projeto</Button>
       </div>
-
     </div>
   </section>
 </BaseLayout>
 
 <style>
   .services-hero {
+    padding-block: clamp(72px, 8vw, 120px);
     background: var(--color-bg-primary);
   }
 
-  .services-hero__grid {
+  .services-hero__grid,
+  .service-detail__grid {
     display: grid;
-    grid-template-columns:
-      minmax(0, 1.2fr)
-      minmax(320px, 0.8fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(40px, 6vw, 96px);
+  }
 
+  .services-hero__grid {
     align-items: end;
-
-    gap: clamp(64px, 10vw, 140px);
   }
 
   .services-hero__eyebrow,
   .service-detail__eyebrow,
+  .services-approach__eyebrow,
   .services-cta__eyebrow {
-    margin-bottom: var(--space-6);
-
+    margin-bottom: var(--space-5);
     color: var(--color-primary);
-
     font-size: 0.75rem;
     font-weight: 600;
-
     letter-spacing: 0.14em;
     text-transform: uppercase;
   }
 
   .services-hero__title {
-    max-width: 1050px;
-
     margin-bottom: 0;
-
-    font-size: clamp(3.5rem, 6.5vw, 7rem);
-    line-height: 0.96;
-
+    font-size: clamp(2.8rem, 4.3vw, 4.5rem);
+    line-height: 1.06;
     letter-spacing: -0.055em;
-  }
-
-  .services-hero__intro {
-    max-width: 600px;
+    text-wrap: balance;
   }
 
   .services-hero__lead {
+    margin-bottom: var(--space-5);
+    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+    line-height: 1.6;
+  }
+
+  .services-hero__anchors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+    margin-bottom: var(--space-6);
+  }
+
+  .services-hero__anchors a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     color: var(--color-text-primary);
-
-    font-size: clamp(1.25rem, 2vw, 1.6rem);
-    line-height: 1.5;
+    border-bottom: 1px solid var(--color-border-hover);
+    font-size: 0.9rem;
   }
 
-  .service-detail {
+  .services-hero__anchors a:hover,
+  .service-detail__proof:hover {
+    color: var(--color-primary-hover);
+  }
+
+  .service-detail,
+  .services-approach {
+    padding-block: clamp(56px, 6vw, 88px);
     background: var(--color-bg-primary);
+    scroll-margin-top: 104px;
   }
 
-  .service-detail--secondary {
+  .service-detail--secondary,
+  .services-approach {
     background: var(--color-bg-secondary);
   }
 
-  .service-detail__grid {
-    display: grid;
-    grid-template-columns:
-      minmax(300px, 0.85fr)
-      minmax(0, 1.15fr);
-
-    gap: clamp(64px, 10vw, 140px);
-  }
-
-  .service-detail__intro {
-    align-self: start;
-  }
-
   .service-detail__number {
-    display: block;
-
-    margin-bottom: var(--space-7);
-
+    margin-right: var(--space-4);
     color: var(--color-text-muted);
-
-    font-size: 0.75rem;
-    font-weight: 600;
-
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
   }
 
   .service-detail__intro h2 {
-    max-width: 700px;
+    max-width: 620px;
+    margin-bottom: 0;
+    font-size: clamp(2rem, 3.2vw, 3.25rem);
+    line-height: 1.08;
+    text-wrap: balance;
   }
 
   .service-detail__content {
     min-width: 0;
   }
 
-  .service-detail__block {
-    padding-block: var(--space-6);
-
-    border-top: 1px solid var(--color-border);
-  }
-
-  .service-detail__block:last-child {
-    border-bottom: 1px solid var(--color-border);
+  .service-detail__lead {
+    margin-bottom: var(--space-5);
+    color: var(--color-text-primary);
+    font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+    line-height: 1.6;
   }
 
   .service-detail__label {
-    margin-bottom: var(--space-5);
-
+    margin-bottom: var(--space-3);
     color: var(--color-text-muted);
-
     font-size: 0.72rem;
     font-weight: 600;
-
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 
-  .service-detail__lead {
-    color: var(--color-text-primary);
-
-    font-size: clamp(1.2rem, 2vw, 1.5rem);
-    line-height: 1.55;
-  }
-
-  .service-detail__block p {
-    max-width: 700px;
-  }
-
-  .service-detail__block ul {
+  .service-detail__content ul {
     display: grid;
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-
-    gap:
-      var(--space-3)
-      var(--space-7);
-
-    margin:
-      var(--space-6)
-      0
-      0;
-
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3) var(--space-5);
+    margin: 0 0 var(--space-5);
     padding: 0;
-
     list-style: none;
   }
 
-  .service-detail__block li {
+  .service-detail__content li {
     position: relative;
-
-    padding-left: var(--space-5);
-
+    padding-left: var(--space-4);
     color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
-  .service-detail__block li::before {
+  .service-detail__content li::before {
     content: "";
-
     position: absolute;
-    top: 0.75em;
+    top: 0.65em;
     left: 0;
-
-    width: 5px;
-    height: 5px;
-
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
-
     background: var(--color-primary);
   }
 
+  .service-detail__mode {
+    margin-bottom: var(--space-5);
+    color: var(--color-text-primary);
+  }
+
+  .service-detail__note {
+    margin: 0;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .service-detail__proof {
+    display: inline-block;
+    margin-top: var(--space-5);
+    color: var(--color-text-primary);
+    font-size: 0.95rem;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+
+  .services-approach__note {
+    margin-bottom: 0;
+  }
+
   .services-cta {
+    padding-block: clamp(64px, 8vw, 120px);
     background: var(--color-primary);
   }
 
   .services-cta__inner {
     display: grid;
-    grid-template-columns:
-      minmax(0, 1.3fr)
-      auto;
-
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: end;
-
     gap: var(--space-8);
   }
 
@@ -539,31 +326,24 @@ import Button from "../components/ui/Button.astro";
 
   .services-cta h2 {
     max-width: 900px;
-
     margin-bottom: var(--space-5);
-
     color: var(--color-bg-primary);
-
-    font-size: clamp(2.5rem, 5vw, 5rem);
-    line-height: 1;
-
+    font-size: clamp(2.4rem, 4.3vw, 4.5rem);
+    line-height: 1.05;
     letter-spacing: -0.045em;
+    text-wrap: balance;
   }
 
-  .services-cta p {
-    max-width: 620px;
-
+  .services-cta__description {
+    max-width: 660px;
     margin-bottom: 0;
-
     color: rgba(17, 19, 21, 0.75);
-
     font-size: 1.1rem;
   }
 
   .services-cta__action :global(.button--primary) {
     background: var(--color-bg-primary);
     color: var(--color-text-primary);
-
     border-color: var(--color-bg-primary);
   }
 
@@ -577,25 +357,17 @@ import Button from "../components/ui/Button.astro";
     .service-detail__grid,
     .services-cta__inner {
       grid-template-columns: 1fr;
-    }
-
-    .services-hero__grid,
-    .service-detail__grid {
-      gap: var(--space-8);
-    }
-
-    .service-detail__block ul {
-      grid-template-columns: 1fr;
+      gap: var(--space-6);
     }
   }
 
   @media (max-width: 640px) {
     .services-hero__title {
-      font-size: clamp(3rem, 14vw, 4.6rem);
+      font-size: clamp(2.1rem, 8vw, 3.6rem);
     }
 
-    .service-detail__number {
-      margin-bottom: var(--space-5);
+    .service-detail__content ul {
+      grid-template-columns: 1fr;
     }
   }
 </style>
