@@ -10,26 +10,37 @@ export const projects = [
     "excerpt": "Website profissional desenvolvido para apresentar percurso, áreas de atuação e facilitar o contacto com pacientes.",
     "theme": "slate",
     "coverImage": "/images/projects/andreia-babo/homepage-desktop.webp",
+    "coverWidth": 1600,
+    "coverHeight": 947,
+    "coverType": "image/webp",
     "coverAlt": "Página inicial do website da Dra. Andreia Babo, com apresentação clínica e acesso ao pedido de consulta.",
     "coverPosition": "center",
     "gallery": [
       {
         "image": "/images/projects/andreia-babo/homepage-desktop.webp",
+        "width": 1600,
+        "height": 947,
         "alt": "Página inicial da Dra. Andreia Babo com apresentação profissional e acesso à marcação de consulta.",
         "label": "Homepage — apresentação do percurso profissional e acesso direto ao pedido de consulta."
       },
       {
         "image": "/images/projects/andreia-babo/ortodontia-desktop.webp",
+        "width": 1600,
+        "height": 947,
         "alt": "Página de Ortodontia com introdução ao tratamento e botão de marcação de avaliação.",
         "label": "Ortodontia — hierarquia da informação numa página de área de atuação."
       },
       {
         "image": "/images/projects/andreia-babo/consulta-desktop.webp",
+        "width": 1600,
+        "height": 947,
         "alt": "Página de pedido de consulta com instruções e formulário de contacto.",
         "label": "Pedido de consulta — percurso de contacto, campos do formulário e indicação de confirmação posterior."
       },
       {
         "image": "/images/projects/andreia-babo/blog-mobile.webp",
+        "width": 478,
+        "height": 1043,
         "alt": "Blog da Dra. Andreia Babo em ecrã mobile, com navegação compacta e artigo de Ortodontia.",
         "label": "Blog em mobile — adaptação da navegação, tipografia e apresentação dos artigos a um ecrã pequeno.",
         "layout": "mobile"
@@ -152,24 +163,33 @@ export const projects = [
     "excerpt": "Website responsivo multi-página desenvolvido no âmbito da formação em desenvolvimento web.",
     "theme": "charcoal",
     "coverImage": "/images/projects/imagine-dragons/homepage.webp",
+    "coverWidth": 1600,
+    "coverHeight": 900,
+    "coverType": "image/webp",
     "coverAlt": "Página inicial da implementação académica de website para Imagine Dragons.",
     "coverFit": "contain",
     "coverAspectRatio": "4 / 3",
     "gallery": [
       {
         "image": "/images/projects/imagine-dragons/homepage.webp",
+        "width": 1600,
+        "height": 900,
         "alt": "Página inicial do website conceptual Imagine Dragons.",
         "label": "Homepage — direção visual e navegação da implementação apresentada.",
         "layout": "wide"
       },
       {
         "image": "/images/projects/imagine-dragons/discografia.webp",
+        "width": 1600,
+        "height": 900,
         "alt": "Página de discografia do website conceptual Imagine Dragons.",
         "label": "Discografia — organização dos álbuns e hierarquia de conteúdo.",
         "layout": "wide"
       },
       {
         "image": "/images/projects/imagine-dragons/tour.webp",
+        "width": 1600,
+        "height": 900,
         "alt": "Página de tour e concertos do website conceptual Imagine Dragons.",
         "label": "Tour — apresentação dos concertos e continuidade da linguagem visual.",
         "layout": "wide"

@@ -63,7 +63,7 @@ import Button from "../ui/Button.astro";
   .final-cta__eyebrow {
     margin-bottom: var(--space-6);
 
-    color: rgba(17, 19, 21, 0.7);
+    color: var(--color-bg-primary);
 
     font-size: 0.75rem;
     font-weight: 600;
@@ -88,7 +88,7 @@ import Button from "../ui/Button.astro";
 
     margin-bottom: var(--space-7);
 
-    color: rgba(17, 19, 21, 0.75);
+    color: var(--color-bg-primary);
 
     font-size: 1.1rem;
   }
@@ -98,6 +98,10 @@ import Button from "../ui/Button.astro";
     color: var(--color-text-primary);
 
     border-color: var(--color-bg-primary);
+  }
+
+  .final-cta__action :global(.button:focus-visible) {
+    outline-color: var(--color-bg-primary);
   }
 
   .final-cta__action :global(.button--primary:hover) {

@@ -1,43 +1,26 @@
-# Astro Starter Kit: Minimal
+# Bruno Faustino Digital Studio
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Website Astro. Node.js >=22.12.0; instalar as dependências com `npm ci`.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Desenvolvimento e build local
 
-## 🚀 Project Structure
+- `npm run dev -- --background`: servidor de desenvolvimento, conforme AGENTS.md.
+- `npm run astro -- dev status` / `stop` / `logs`: gerir o servidor.
+- `npm run build:production`: build local com `PUBLIC_SITE_URL=https://brunofaustino.pt`, seguido de limpeza de `.DS_Store` em `dist`.
+- `npm run preview`: inspecionar o build local.
 
-Inside of your Astro project, you'll see the following folders and files:
+Usar `npm run build:production` para QA de canonical, OG, sitemap e robots com a origem pública prevista. Este comando não faz deploy, não remove Private e não altera a lógica de indexação por contexto.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+Para configurar também `npm run build`, copiar `.env.example` para `.env` apenas se este ainda não existir, ou integrar manualmente `PUBLIC_SITE_URL=https://brunofaustino.pt` no ficheiro existente. Nunca sobrescrever configurações locais nem commitar secrets. `.env` e `.env.production` estão ignorados pelo Git.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+A precedência existente mantém-se: `PUBLIC_SITE_URL` do processo → configuração local → `URL` Netlify → localhost. Sem configuração explícita, `URL` herdada do Netlify pode produzir a origem errada num build local. Não alterar variáveis do alojamento nem os contextos preview/production como parte deste procedimento.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Artefacto e segurança
 
-Any static assets, like images, can be placed in the `public/` directory.
+O fluxo suportado é `npm run build` (ou `npm run build:production`), com `dist` como diretório de publicação. O `postbuild` remove exclusivamente ficheiros `.DS_Store` desse diretório, sem seguir diretórios simbólicos. Não executar diretamente `astro build` para preparar entregas, pois ignora o `postbuild` npm. `.gitignore` já exclui `.DS_Store`, mas isso, por si só, não impede a cópia de `public` para `dist`.
 
-## 🧞 Commands
+`public/_headers` é copiado para `dist/_headers` e define, em todas as rotas estáticas, `nosniff`, `strict-origin-when-cross-origin`, recusa de camera/microphone/geolocation e `X-Frame-Options: DENY`. Não introduz uma CSP completa. Não limita ligações WhatsApp/mailto nem os destinos de rede do Umami. Referência: [headers nativos Netlify](https://docs.netlify.com/manage/routing/headers/).
 
-All commands are run from the root of the project, from a terminal:
+O preview Astro não aplica os headers Netlify. A presença em `dist/_headers` confirma a configuração do artefacto; só a resposta HTTP autenticada de um deploy privado confirma os headers servidos. Uma resposta 401 anónima pertence à proteção de acesso e não comprova os headers das páginas.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+O site mantém-se Private. Build/QA local não equivale a deploy, lançamento público, validação jurídica ou prova de analytics/formulário em produção. As pendências estão em `PENDENCIAS.md`.

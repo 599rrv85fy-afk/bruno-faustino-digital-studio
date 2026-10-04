@@ -5,7 +5,7 @@ const { project } = Astro.props;
 const gallery = (project.gallery ?? []).filter((item) => item.image && item.alt);
 const sections = (project.sections ?? []).filter((section) => section.title && (section.type === "gallery" ? gallery.length : section.paragraphs?.length));
 ---
-<BaseLayout title={`${project.title} — ${project.nature} — Bruno Faustino Digital Studio`} description={project.seoDescription ?? project.excerpt} image={project.coverImage}>
+<BaseLayout title={`${project.title} — ${project.nature} — Bruno Faustino Digital Studio`} description={project.seoDescription ?? project.excerpt} image={project.coverImage} imageWidth={project.coverWidth} imageHeight={project.coverHeight} imageType={project.coverType} imageAlt={project.coverAlt}>
   <section class:list={["case-hero", {"case-hero--brief":project.detailVariant === "brief"}]}>
     <div class="container">
       <a class="case-back" href="/projetos">← Voltar a Projetos</a>
@@ -30,7 +30,7 @@ const sections = (project.sections ?? []).filter((section) => section.title && (
       <h2 id={section.id}>{section.title}</h2>
       {section.type === "gallery" ? <div class="case-gallery">
         {gallery.map((item) => <figure class:list={["case-gallery__item", {"case-gallery__item--mobile": item.layout === "mobile"}]}>
-          <a href={item.image} aria-label={`Abrir imagem: ${item.label}`}><img src={item.image} alt={item.alt} loading="lazy" decoding="async" /></a>
+          <a href={item.image} aria-label={`Abrir imagem: ${item.label}`}><img src={item.image} alt={item.alt} width={item.width} height={item.height} loading="lazy" decoding="async" /></a>
           {item.label && <figcaption>{item.label}</figcaption>}
         </figure>)}
       </div> : <div class="case-copy">{section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}</div>}

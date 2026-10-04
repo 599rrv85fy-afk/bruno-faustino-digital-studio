@@ -260,7 +260,7 @@ const roles = ["primary", "complementary", "planned"];
   }
 
   .projects-cta__eyebrow {
-    color: rgba(17, 19, 21, 0.7);
+    color: var(--color-bg-primary);
   }
 
   .projects-cta h2 {
@@ -281,7 +281,7 @@ const roles = ["primary", "complementary", "planned"];
 
     margin-bottom: 0;
 
-    color: rgba(17, 19, 21, 0.75);
+    color: var(--color-bg-primary);
 
     font-size: 1.1rem;
   }
@@ -291,6 +291,10 @@ const roles = ["primary", "complementary", "planned"];
     color: var(--color-text-primary);
 
     border-color: var(--color-bg-primary);
+  }
+
+  .projects-cta__action :global(.button:focus-visible) {
+    outline-color: var(--color-bg-primary);
   }
 
   .projects-cta__action :global(.button--primary:hover) {

@@ -321,7 +321,7 @@ import Button from "../components/ui/Button.astro";
   }
 
   .services-cta__eyebrow {
-    color: rgba(17, 19, 21, 0.7);
+    color: var(--color-bg-primary);
   }
 
   .services-cta h2 {
@@ -337,7 +337,7 @@ import Button from "../components/ui/Button.astro";
   .services-cta__description {
     max-width: 660px;
     margin-bottom: 0;
-    color: rgba(17, 19, 21, 0.75);
+    color: var(--color-bg-primary);
     font-size: 1.1rem;
   }
 
@@ -345,6 +345,10 @@ import Button from "../components/ui/Button.astro";
     background: var(--color-bg-primary);
     color: var(--color-text-primary);
     border-color: var(--color-bg-primary);
+  }
+
+  .services-cta__action :global(.button:focus-visible) {
+    outline-color: var(--color-bg-primary);
   }
 
   .services-cta__action :global(.button--primary:hover) {

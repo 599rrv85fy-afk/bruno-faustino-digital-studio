@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "postbuild": "node scripts/clean-build-artifacts.mjs",
+    "build:production": "PUBLIC_SITE_URL=https://brunofaustino.pt npm run build",
     "preview": "astro preview",
     "astro": "astro"
   },
